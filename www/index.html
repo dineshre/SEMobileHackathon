@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script type="text/javascript">
+            
+            
+            // If you want to prevent dragging, uncomment this section
+            /*
+             function preventBehavior(e)
+             {
+             e.preventDefault();
+             };
+             document.addEventListener("touchmove", preventBehavior, false);
+             */
+        
+        /* If you are supporting your own protocol, the var invokeString will contain any arguments to the app launch.
+         see http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
+         for more details -jm */
+        /*
+         function handleOpenURL(url)
+         {
+         // TODO: do something with the url passed in.
+         }
+         */
+        
+        function onBodyLoad()
+        {
+            document.addEventListener("deviceready", onDeviceReady, false);
+        }
+        
+        /* When this function is called, Cordova has been initialized and is ready to roll */
+        /* If you are supporting your own protocol, the var invokeString will contain any arguments to the app launch.
+         see http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
+         for more details -jm */
+        function onDeviceReady()
+        {
+            
+            var myChart = new FusionCharts("Pie3D", "myChartId", "95%", "90%", "0", "1");
+            myChart.setTransparent(true);
+            myChart.setXMLData("<chart bgAlpha='0,0' caption='Weekly Sales Summary' xAxisName='Week' " +
+                               "yAxisName='Sales' numberPrefix='$'>" +
+                               "<set label='Week 1' value='14400' />" +
+                               "<set label='Week 2' value='19600' />" +
+                               "<set label='Week 3' value='24000' />" +
+                               "<set label='Week 4' value='15700' />" +
+                               "</chart>");
+                               myChart.render("chartContainer");
+                               
+        }
+        
+            </script>
+    </head>
+    <body>
+        <input type=button onClick="location.href='DragDrop.html'" value='click here'>
+    </body>
+</html>
