@@ -1,0 +1,25 @@
+/Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/ant-build/HackathonApp.ap_ \
+ : /Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/res/drawable/icon.png \
+/Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/res/drawable-hdpi/icon.png \
+/Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/res/drawable-ldpi/icon.png \
+/Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/res/drawable-mdpi/icon.png \
+/Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/res/drawable-xhdpi/icon.png \
+/Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/res/values/strings.xml \
+/Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/res/xml/config.xml \
+/Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/ant-build/res/drawable/icon.png \
+/Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/ant-build/res/drawable-hdpi/icon.png \
+/Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/ant-build/res/drawable-ldpi/icon.png \
+/Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/ant-build/res/drawable-mdpi/icon.png \
+/Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/ant-build/res/drawable-xhdpi/icon.png \
+/Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/assets/_where-is-www.txt \
+/Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/assets/www \
+/Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/assets/www/cordova.js \
+/Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/assets/www/cordova_plugins.js \
+/Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/assets/www/css \
+/Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/assets/www/img \
+/Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/assets/www/index.html \
+/Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/assets/www/js \
+/Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/assets/www/css/index.css \
+/Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/assets/www/img/logo.png \
+/Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/assets/www/js/index.js \
+/Users/dineshre/Documents/Dev/SE_Mobile_Hackathon/HackathonApp/platforms/android/ant-build/AndroidManifest.xml \

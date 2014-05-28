@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link href="css/se.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/angular-snap.css" rel="stylesheet"/>
+        <title>Kinvey Starter</title>
+</head>
+
+<body ng-Controller="MainCtrl">
+
+<snap-drawer>
+    <senav menuitemlist="menuItems" ng-controller="NavigationCtrl" ></senav>
+</snap-drawer>
+
+<snap-content snap-options="snapOpts" class="scrollableInnerContent">
+
+    <!-- Main Header Bar -->
+    <div class="navbar navbar-default showNavs">
+
+        <!-- snap-toggle directive is used to handle menu toggling -->
+
+        <button class="btn  navbar-toggle pull-left" snap-toggle="" >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+
+        <div class="navbar-application-name">Kitchen Sink</div>
+
+        <i class="glyphicon glyphicon-refresh navbar-secondary-icon-right" ng-click="logMeOut()"></i>
+
+    </div>
+
+    <!-- Secondary Header Bar -->
+    <nav class="navbar navbar-secondary showNavs" ng-controller="SecondaryNavigationCtrl" >
+        <div class="container-fluid">
+            <div class="navbar-header">
+
+                <i ng-click="back()" ng-show="showBack" class="glyphicon glyphicon-chevron-left navbar-secondary-icon-left"></i>
+                <div class="navbar-secondary-icon-left" ng-hide="showBack">&nbsp;</div>
+
+                <i class="glyphicon glyphicon-cog navbar-secondary-icon-right"></i>
+                <div class="navbar-secondary-page-title ">{{ pageTitle }}</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content Container -->
+    <div class="container-full-width">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div style="position: relative; min-height: 400px; ">
+                    <div ng-view ng-class="slide"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--START LOGIN SAMPLE-->
+    <div class="container-fluid login loginPosition" ng-show="showLogin">
+        <h1 class="login-title">Kitchen Sink</h1>
+        <div class="login-version">Version 1.0</div>
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control input-lg" placeholder="Login" name="username" ng-model="username">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control input-lg" placeholder="Password" name="password" ng-model="password">
+            </div>
+            <div class="form-group login-remember-me">
+                <label class="checkbox">
+                    <input type="checkbox" class="form-control">
+                    Remember me
+                </label>
+            </div>
+            <a class="login-forgot-password-link">Forgot Password?</a>
+            <input class="login-submit-btn" type="submit" value="Login" ng-click="login()">
+            <a class="login-create-account-link" href="">Create an account</a>
+            <i class="login-logo"></i>
+        </form>
+    </div>
+    <!--END LOGIN SAMPLE-->
+
+</snap-content>
+
+<script type="text/javascript" src="cordova.js"></script>
+
+<script src="vendor/jquery.js"></script>
+<script src="vendor/kinvey.js"></script>
+<script src="vendor/moment.js"></script>
+<script src="vendor/fastclick.js"></script>
+<script src="directives/snap.js"></script>
+
+<script src="angular/angular.min.js"></script>
+<script src="angular/angular-route.min.js"></script>
+<script src="angular/angular-animate.min.js"></script>
+<script src="directives/angular-snap.js"></script>
+<script src="directives/navmenu.js"></script>
+<script src="services/configFunctions.js"></script>
+<script src="services/kinveyFunctions.js"></script>
+
+<script src="app.js"></script>
+<script src="controllers.js"></script>
+
+
+</body>
+</html>
+
+

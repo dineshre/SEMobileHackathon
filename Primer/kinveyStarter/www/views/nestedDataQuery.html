@@ -1,0 +1,19 @@
+<div class="scrollableContent">
+
+        <ul class="list">
+
+            <li class="list-item" ng-repeat="i in nestedDataQuery">
+                <div class="item-graphic">
+                    <img src="http://placeimg.com/40/40/tech" alt="">
+                </div>
+                <div class="item-body">
+                    <div class="meta"><ul><li ng-repeat="h in i.roles">{{h}}</li></ul></div>
+                    <h4>{{i.username}}</h4>
+                    <div  ng-repeat="j in i.address">
+                    <p>{{j.street}}</p>
+                    <p>{{j.city}}, {{j.state}}</p><br>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>

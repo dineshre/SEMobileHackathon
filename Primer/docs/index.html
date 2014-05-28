@@ -1,0 +1,3024 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link href="css/se.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/angular-snap.css" rel="stylesheet"/>
+        <title>Schneider Electric Hybrid SDK Docs</title>
+
+        <!--quick styles just for docs-->
+        <style>
+            body{
+                overflow: auto !important;
+                overflow-x:hidden !important;
+            }
+
+            hr {
+              margin: 50px 0;
+            }
+
+            .glyphicon {
+               font-size: 25px;
+            }
+
+            .se-icon {
+              font-size: 25px;
+            }
+
+            .bs-glyphicons {
+                overflow: hidden;
+            }
+
+            .bs-glyphicons-list {
+                padding-left: 0;
+                list-style: none;
+                text-align: center;
+            }
+
+            .bs-glyphicons li:hover {
+                color: #fff;
+                background-color: #35a957;
+            }
+
+                .bs-glyphicons li {
+                    margin: 5px;
+                    text-align: center;
+                    float: left;
+                    width: 15%;
+                    font-size: 15px !important;
+                    height: 100px;
+                    padding: 10px;
+                    line-height: 1.4;
+                    text-align: center;
+                    -webkit-box-shadow: 2px 2px 5px 1px #B5B5B5;
+                    box-shadow: 2px 2px 5px 1px #B5B5B5;
+                    -webkit-border-radius: 3px;
+                    border-radius: 3px;
+                    border: solid  1px #c0c0c0;
+                    background-color: #f9f9f9;
+                    cursor: pointer;
+                }
+
+            .bs-glyphicons .glyphicon-class {
+                display: block;
+                text-align: center;
+                word-wrap: break-word;
+            }
+
+            .fillBlock{
+                display: block;
+            }
+
+            .fillBlock:hover{
+                text-decoration: none;
+            }
+
+            .demo-sample {
+                float: left;
+                background-color: #fff;
+                position: relative;
+                width: 380px;
+                overflow: hidden;
+                border: 30px #2e2e2e solid;
+                border-radius: 5px;
+                -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+                box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+                height: 643px;
+            }
+        </style>
+
+</head>
+
+<body ng-controller="MainCtrl">
+
+<snap-drawer>
+
+    <senav menuitemlist="menuItems" ng-controller="NavigationCtrl" ></senav>
+
+</snap-drawer>
+
+<snap-content snap-options="snapOpts" class="scrollable">
+
+<div class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+
+        <button class="btn  navbar-toggle pull-left" snap-toggle="" ng-show="showMenu" >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header pull-left">
+
+            <a class="navbar-brand" ng-href="#/"><i class="se-icon se-icon-SE_Logo" style="font-size:35px; margin-top: -10px; "></i></a>
+        </div>
+
+        <div class="pull-right" ng-controller="NavigationCtrl">
+          <ul class="nav navbar-nav" style="cursor: pointer;">
+              <li ng-class="{active: isCurrentPath('/')}"><a ng-href="#/" ng-click="next()" class="next">Home</a></li>
+              <li ng-class="{active: isCurrentPath('/windows')}"><a ng-href="#/windows" ng-click="next()" class="next">Windows Setup</a></li>
+              <li ng-class="{active: isCurrentPath('/mac')}"><a ng-href="#/mac" ng-click="next()" class="next">Mac Setup</a></li>
+              <li ng-class="{active: isCurrentPath('/tips')}"><a ng-href="#/tips" ng-click="next()" class="next">Cordova Tips</a></li>
+              <li ng-class="{active: isCurrentPath('/icons')}"><a ng-href="#/icons" ng-click="next()" class="next">Icons</a></li>
+              <li ng-class="{active: isCurrentPath('/ui')}"><a ng-href="#/ui" ng-click="next()" class="next">Schneider UI</a></li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+<br>
+
+<div class="row">
+<div class="col-md-12">
+
+<div style="position: relative; min-height: 400px;">
+    <div ng-view ng-class="slide"></div>
+</div>
+
+
+</div>
+</div>
+
+</div>
+
+
+
+</snap-content>
+
+
+
+<script src="vendor/jquery.js"></script>
+<script src="directives/snap.js"></script>
+
+<script src="angular/angular.min.js"></script>
+<script src="angular/angular-route.min.js"></script>
+<script src="angular/angular-animate.min.js"></script>
+<script src="directives/angular-snap.js"></script>
+<script src="directives/navmenu.js"></script>
+
+<script src="app.js"></script>
+<script src="controllers.js"></script>
+
+<script type="text/ng-template" id="home.html">
+  <div>
+    <h2>Welcome to the Schneider Mobile Hybrid SDK Documentation</h2>
+    There are 4 sections to this documentation.<br><br>
+    <ul class="list-group">
+      <li class="list-group-item next"><a ng-href="#/windows" ng-click="next()" class=" fillBlock">Windows setup walkthrough</a></li>
+      <li class="list-group-item next"><a ng-href="#/mac" ng-click="next()" class=" fillBlock">Mac setup walkthrough</a></li>
+      <li class="list-group-item next"><a ng-href="#/tips" ng-click="next()" class=" fillBlock">General tips for cordova (phonegap) mobile app development</a></li>
+      <li class="list-group-item next"><a ng-href="#/ui" ng-click="next()" class=" fillBlock">The Schneider UI components</a></li>
+    </ul>
+  </div>
+</script>
+
+<script type="text/ng-template" id="windows.html">
+  <div>
+    <h2>Windows Setup - Android</h2>
+
+    <h3>REQUIRED SOFTWARE BEFORE YOU CAN START BUILDING AN APP</h3>
+    Download NodeJS, Android SDK, ANT, and Java JDK<br>
+    <ul>
+      <li><a href="http://nodejs.org/" target="_blank">http://nodejs.org/</a></li>
+      <li><a href="http://developer.android.com/sdk/index.html" target="_blank">http://developer.android.com/sdk/index.html</a></li>
+      <li><a href="http://ant.apache.org/bindownload.cgi" target="_blank">http://ant.apache.org/bindownload.cgi</a></li>
+      <li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></li>
+    </ul>
+    <br>
+    <p>
+      NOTE*: For easiest setup, extract the android sdk + ANT bundle to their own folders under the C drive.
+      Ensure that the following variables have been created. If not, right click on  My Computer and select Properties.
+      Then choose Advanced System Settings. Follow the next steps to complete environment variables setup.</p>
+
+    <p><strong>
+      Environment Variables -> NEW<br>
+      ANT_HOME = C:\apache-ant-1.9.3<br>
+      JAVA_HOME = C:\Program Files\Java\jdk1.8.0_05<br><br>
+      Environment Variables -> Path<br>
+      C:\Program Files\nodejs\;<br>
+      %ANT_HOME%\bin;<br>
+      C:\adt-bundle-windows-x86_64-20140321\sdk\platform-tools;<br>
+      C:\adt-bundle-windows-x86_64-20140321\sdk\tools;<br>
+    </strong></p>
+
+    <hr>
+
+    <h3>Update your Android SDK to latest version and create an Android Device Emulator</h3>
+    <p>Go to you extracted android sdk folder and in the root should be the SDK Manager.exe app.  Run this to create
+      your emulator. Make sure to keep your Tools up to date and also make sure you have at least
+      1 API installed along with it System Image.  The System Image is the emulator. It’s recommended
+      to use the ARM versions instead of the Intel.  Despite the Intel version being faster, you need to
+      have Intel VT-x enabled in your BIOS. Here’s a link if you feel like turning that on if your system can handle it.</p><br>
+    <a href="https://software.intel.com/en-us/android/articles/speeding-up-the-android-emulator-on-intel-architecture">https://software.intel.com/en-us/android/articles/speeding-up-the-android-emulator-on-intel-architecture</a>
+    <br><br>
+    <img src="assets/tools.jpg" class="img-responsive img-rounded"/>
+    <br><br>
+
+    <p>
+      Once you have your sdk and tools up to date, click the Tools menu bar item and select Manage AVDS.
+      By default you’ll have nothing under the Android Virtual Devices tab.  Click New  to generate one. You can
+      select whatever you feel like from the available dropdowns.<br><br>
+
+      <strong>NOTE</strong>*: If you select a Target API and the CPU/ABI dropdown is empty, it means you
+      need to install that API version and emulator back in the sdk manager. It’s definitely beneficial
+      to install a couple different API versions, including the 4.0 version.  The emulator for 4.0 is quicker
+      than the newer API levels because it doesn’t have the newer features that 4.3 and 4.4 have.  That being
+      said, it’s only an emulator and regardless of the API level, it won’t run all of your apps features because
+      they are very limited so running your phonegap application on 4.0 shouldn’t cause an issue.  There's no
+      need to install anything below the 4.0 API.<br><br>
+
+      <strong>IMPORTANT</strong>*:On Windows, the Memory Options field MUST be below 768 MB of ram.  Regardless
+      of how powerful your machine is, anything over that will either make the emulator run slower than it is,
+      never get out of the emulator boot cycle or completely hose your computer.<br><br>
+      <strong>PERFORMANCE BOOSTERS</strong>*: Under Emulation Options you’ll see 2 options – Snapshot and Use
+      Host GPU.  Both help will speeding up the emulator, but in different ways and CANNOT be used together.
+      With Snapshot enabled, after the first successful boot of the emulator, the boot process is cached so
+      the next time you boot the emulator, it should always boot up much quicker.
+      With Use Host GPU enabled, it lets your video card do more of the heavy lifting for the emulator.  It doesn't
+      really speed up boot time, but the rendering and general usage of the emulator is definitely better.  Use
+      this feature only if you have a really good video card, otherwise it’ll most likely run slower than just leaving it off.
+    </p>
+    <br><br>
+    <img src="assets/avd.jpg" class="img-responsive img-rounded"/>
+    <br><br>
+    <p>After you have selected the features you'd like, press OK and you'll get a confirmation of what your generating after
+      that, it should now show up in your available Android Virtuals Devices.</p>
+
+    <hr>
+
+    <h3>Install Cordova with Node NPM</h3>
+    Open a command line and type<br>
+    <pre>npm install –g cordova</pre>
+    This will install the cordova CLI tool for global use so you can create projects anywhere on your file system.
+
+    <hr>
+
+    <h3>Create a Kinvey account for use of a DataStore</h3>
+    <p>Go to <a href="http://schneider-electric.kinvey.com" target="_blank">http://schneider-electric.kinvey.com</a>
+      and sign up for an account with your Schneider email address.  From there you can create a user and a datastore.<br><br>
+      For the starter apps included with the sdk, you will notice a couple predefined datastore collections used in the examples.
+      Inside the docs folder you'll see another folder called kinveyData which includes 3 JSON files.  Once you have created a
+      kinvey account, go into your datastore and you can import this data so the examples will run for you.  Each collection
+      you create should be named the same as the JSON file you are importing ( ie qrScans.json should be loaded into a collection
+      called qrScans ). You do not need to load these example files, but if you want to run the kinvey example apps, you will
+      have to create your own datastores and update the apps accordingly.<br><br>
+      <strong>NOTE</strong>*: When doing a data import in Kinvey, they always show a red alert after the import regarding their
+      file size limitations. Don't worry, your import didnt fail if it didn't exceed this file size, but they apparently show
+      it regardless.  Just close the import window and notification box and then refresh your collection.  The newly imported
+      data should now show up.
+    </p>
+    <br><br>
+
+    <h3>CREATE A NEW CORDOVA/PHONEGAP PROJECT</h3>
+    <p>Open a command line, change the directory to where you would like to create your application and type</p>
+
+    <pre>cordova create helloWorld com.se.helloworld HelloWorld</pre>
+
+    <p>This will create a brand new directory for your project called helloWorld.  The com.se.helloworld is your
+      application’s ID and HelloWorld is the actual application name. If you open the new directory, you
+      will see a 'www' folder. This is where all of your HTML, CSS, JS and assets will reside for the project.
+      In the command line, change the directory to the newly created project folder</p>
+
+    <pre>cd helloWorld</pre>
+
+    <p>Now you can add the android platform to your project</p>
+    <pre>cordova platform add android</pre>
+
+    <p>Add to config.xml which is in the root of your projects folder. This allows for splashscreens if you decide to
+      use them and also display an initial application loading message over the splashscreen.  Cordova projects
+      can only have static png files for a splashscreen a loading dialog might be better for the UX. These 5 lines
+      aren't required, but the 2 splashscreen lines are if you’ll be using a splashscreen.<br><br>
+      <strong>NOTE</strong>*: The value option for SplashScreen is the name of the png file without the extension,
+      ie screen.png. SplashScreenDelay’s value is the length in milliseconds that the splash will stay up. Both
+      LoadingDialog and LoadingPageDialog values are the text that shows next to the activity loading indicator.<br><br>
+      LoadingDialog is shown when the app first boots during your splash screen. The LoadingPageDialog shows any time
+      your app switches a NATIVE window view.  Any regular html link changes WILL NOT trigger this.  An example would
+      be if your main app spawns a child WebView container, depending on how long it takes to render, the LoadingPageDialog
+      will appear to show the user that some activity is occurring.
+    </p>
+
+    <pre>
+    &lt;preference name="SplashScreen" value="screen" /&gt;
+    &lt;preference name="SplashScreenDelay" value="5000" /&gt;
+    &lt;preference name="LoadingDialog" value="Schneider Electric"/&gt;
+    &lt;preference name="LoadingPageDialog" value=""/&gt;
+    &lt;preference name="Orientation" value="portrait" /&gt;
+    </pre>
+
+    <p>Without doing any coding, the default project can be run. You can either build the project to verify
+      there are no errors or you can run it. The run command does a build beforehand to check for errors as well.</p>
+
+    <pre>cordova build android</pre>
+    or
+    <pre>cordova run android</pre>
+
+    <br><br>
+
+  </div>
+</script>
+
+<script type="text/ng-template" id="mac.html">
+<div>
+<h2>Mac Setup - Android</h2>
+
+<h3>REQUIRED SOFTWARE BEFORE YOU CAN START BUILDING AN APP</h3>
+Download NodeJS, Android SDK, ANT, and Java JDK<br>
+<ul>
+  <li><a href="http://nodejs.org/" target="_blank">http://nodejs.org/</a></li>
+  <li><a href="http://developer.android.com/sdk/index.html" target="_blank">http://developer.android.com/sdk/index.html</a></li>
+  <li><a href="http://ant.apache.org/bindownload.cgi" target="_blank">http://ant.apache.org/bindownload.cgi</a></li>
+  <li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></li>
+</ul>
+<br>
+
+<h3>JDK</h3>
+Check if your JDK is installed and is greater than 1.6.0. Open up the Terminal and type in:
+<br>
+<pre>java -version</pre>
+<br>
+If it doesn't exist, MacOS X will auto download JDK.
+<br>
+You should see something like the following:
+    <pre>
+        java version "1.6.0_37"
+        Java(TM) SE Runtime Environment (build 1.6.0_37-b06-434-11M3909)
+        Java HotSpot(TM) 64-Bit Server VM (build 20.12-b01-434, mixed mode)
+</pre>
+
+<hr>
+
+<h3>Android SDK</h3>
+<p>You can set your PATH variable on a machine running OS X in your bash profile. Doing so is easy, and is
+  all done in one file.<br><br>
+
+  In your Home folder is a file named .bash_profile. Open it with any text editor.<br><br>
+
+  You may see a blank file, or it may be full of other information. All we need to do is add a couple lines to the
+  top of the file:<br><br>
+
+        <pre>export PATH="$HOME/Android/sdk/tools:$PATH"
+        export PATH="$HOME/Android/sdk/platform-tools:$PATH"
+        </pre>
+<br>
+(Did we mention that if your SDK is in another location, you'll need to adjust things accordingly? Good.)<br>
+Save the file, and reboot your computer so the new PATH is sourced properly.
+</p>
+
+
+<hr>
+
+
+<h3>Update your Android SDK to latest version and create an Android Device Emulator</h3>
+<p>Go to you extracted android sdk folder and in the root should be the SDK Manager app.  Run this to create
+  your emulator. Make sure to keep your Tools up to date and also make sure you have at least
+  1 API installed along with it System Image.  The System Image is the emulator. It’s recommended
+  to use the ARM versions instead of the Intel.  Despite the Intel version being faster, you need to
+  have Intel VT-x enabled in your BIOS. Here’s a link if you feel like turning that on if your system can handle it.</p><br>
+<a href="https://software.intel.com/en-us/android/articles/speeding-up-the-android-emulator-on-intel-architecture">https://software.intel.com/en-us/android/articles/speeding-up-the-android-emulator-on-intel-architecture</a>
+<br><br>
+<em>Image was taken on a PC, but it will look the same on a Mac</em>
+<img src="assets/tools.jpg" class="img-responsive img-rounded"/>
+<br><br>
+
+<p>
+  Once you have your sdk and tools up to date, click the Tools menu bar item and select Manage AVDS.
+  By default you’ll have nothing under the Android Virtual Devices tab.  Click New  to generate one. You can
+  select whatever you feel like from the available dropdowns.<br><br>
+
+  <strong>NOTE</strong>*: If you select a Target API and the CPU/ABI dropdown is empty, it means you
+  need to install that API version and emulator back in the sdk manager. It’s definitely beneficial
+  to install a couple different API versions, including the 4.0 version.  The emulator for 4.0 is quicker
+  than the newer API levels because it doesn’t have the newer features that 4.3 and 4.4 have.  That being
+  said, it’s only an emulator and regardless of the API level, it won’t run all of your apps features because
+  they are very limited so running your phonegap application on 4.0 shouldn’t cause an issue.  There's no
+  need to install anything below the 4.0 API.<br><br>
+
+  <strong>IMPORTANT</strong>*:On Windows, the Memory Options field MUST be below 768 MB of ram.  Regardless
+  of how powerful your machine is, anything over that will either make the emulator run slower than it is,
+  never get out of the emulator boot cycle or completely hose your computer.<br><br>
+  <strong>PERFORMANCE BOOSTERS</strong>*: Under Emulation Options you’ll see 2 options – Snapshot and Use
+  Host GPU.  Both help will speeding up the emulator, but in different ways and CANNOT be used together.
+  With Snapshot enabled, after the first successful boot of the emulator, the boot process is cached so
+  the next time you boot the emulator, it should always boot up much quicker.
+  With Use Host GPU enabled, it lets your video card do more of the heavy lifting for the emulator.  It doesn't
+  really speed up boot time, but the rendering and general usage of the emulator is definitely better.  Use
+  this feature only if you have a really good video card, otherwise it’ll most likely run slower than just leaving it off.
+</p>
+<br><br>
+<em>Image was taken on a PC, but it will look the same on a Mac</em>
+<img src="assets/avd.jpg" class="img-responsive img-rounded"/>
+<br><br>
+<p>After you have selected the features you'd like, press OK and you'll get a confirmation of what your generating after
+  that, it should now show up in your available Android Virtuals Devices.</p>
+
+<br>
+<hr>
+<br>
+
+<h3>Installing Ant</h3>
+
+<p>After you have made sure Java was installed, rename the uncompressed Apache Ant file you downloaded to ant.</p>
+
+<p>In the Terminal application move the downloaded ant directory with the following command (note you must be
+  logged in
+  as an administrator otherwise you will get an error informing you that you don’t have permission):</p>
+
+<p>
+<pre>mv /Users/username/Downloads/ant /usr/share/</pre>
+</p>
+
+<p>Assuming there were no problems with running this command, edit ~/.bash_profile to add path environment
+  variables for the recently installed ant directory</p>
+
+<p>Add the following environment variable to the .bash_profile file:</p>
+
+<p>
+<pre>export ANT_HOME=“/usr/share/ant"</pre>
+</p>
+
+<p>Then, on a new line, add the following environment variable:</p>
+
+<p>
+<pre>export PATH=$PATH:$ANT_HOME/bin</pre>
+</p>
+
+<p>Save the file and exit your editor</p>
+
+<p>Now type the following command:</p>
+
+<p>
+<pre>source ~/.bash_profile</pre>
+</p>
+
+<p>You should now be able to use the android platform in your cordova projects.</p>
+
+<hr>
+
+<h2>Mac Setup - iOS</h2>
+
+<h3>REQUIRED SOFTWARE BEFORE YOU CAN START BUILDING AN APP</h3>
+Download NodeJS, Xcode, and Java JDK<br>
+<ul>
+  <li><a href="http://nodejs.org/" target="_blank">http://nodejs.org/</a></li>
+  <li><a href="https://developer.apple.com/xcode/downloads/" target="_blank">https://developer.apple.com/xcode/downloads/</a></li>
+  <li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></li>
+</ul>
+<p><strong>NOTE</strong>*: Java JDK install is the same as the instructions for Android.</p>
+<hr>
+
+<h2>Cordova (Phonegap) Setup</h2>
+
+<h3>Install Cordova with Node NPM</h3>
+
+<p>Open a command line and type</p>
+
+<p>
+<pre>npm install –g cordova</pre>
+</p>
+
+<p>This will install the cordova CLI tool for global use so you can create projects anywhere on your file
+  system.</p>
+
+<hr>
+
+<h3>Create a Kinvey account for use of a DataStore</h3>
+<p>Go to <a href="http://schneider-electric.kinvey.com" target="_blank">http://schneider-electric.kinvey.com</a>
+  and sign up for an account with your Schneider email address.  From there you can create a user and a datastore.<br><br>
+  For the starter apps included with the sdk, you will notice a couple predefined datastore collections used in the examples.
+  Inside the docs folder you'll see another folder called kinveyData which includes 3 JSON files.  Once you have created a
+  kinvey account, go into your datastore and you can import this data so the examples will run for you.  Each collection
+  you create should be named the same as the JSON file you are importing ( ie qrScans.json should be loaded into a collection
+  called qrScans ). You do not need to load these example files, but if you want to run the kinvey example apps, you will
+  have to create your own datastores and update the apps accordingly.</p>
+
+<p><strong>NOTE</strong>*: When doing a data import in Kinvey, they always show a red alert after the import regarding their
+  file size limitations. Don't worry, your import didnt fail if it didn't exceed this file size, but they apparently show
+  it regardless.  Just close the import window and notification box and then refresh your collection.  The newly imported
+  data should now show up.
+</p>
+<br><br>
+
+<h3>CREATE A NEW CORDOVA/PHONEGAP PROJECT</h3>
+<p>Open a command line, change the directory to where you would like to create your application and type</p>
+
+<pre>cordova create helloWorld com.se.helloworld HelloWorld</pre>
+
+<p>This will create a brand new directory for your project called helloWorld.  The com.se.helloworld is your
+  application’s ID and HelloWorld is the actual application name. If you open the new directory, you
+  will see a 'www' folder. This is where all of your HTML, CSS, JS and assets will reside for the project.
+  In the command line, change the directory to the newly created project folder</p>
+
+<pre>cd helloWorld</pre>
+
+<p>Now you can add the ios and/or android platform to your project</p>
+<pre>cordova platform add ios<br>cordova platform add android</pre>
+
+<p>Add to config.xml which is in the root of your projects folder. This allows for splashscreens if you decide to
+  use them and also display an initial application loading message over the splashscreen.  Cordova projects
+  can only have static png files for a splashscreen a loading dialog might be better for the UX. These 5 lines
+  aren't required, but the 2 splashscreen lines are if you’ll be using a splashscreen.<br><br>
+  <strong>NOTE</strong>*: The value option for SplashScreen is the name of the png file without the extension,
+  ie screen.png. SplashScreenDelay’s value is the length in milliseconds that the splash will stay up. Both
+  LoadingDialog and LoadingPageDialog values are the text that shows next to the activity loading indicator.<br><br>
+  LoadingDialog is shown when the app first boots during your splash screen. The LoadingPageDialog shows any time
+  your app switches a NATIVE window view.  Any regular html link changes WILL NOT trigger this.  An example would
+  be if your main app spawns a child WebView container, depending on how long it takes to render, the LoadingPageDialog
+  will appear to show the user that some activity is occurring.
+</p>
+
+    <pre>
+    &lt;preference name="SplashScreen" value="screen" /&gt;
+    &lt;preference name="SplashScreenDelay" value="5000" /&gt;
+    &lt;preference name="LoadingDialog" value="Schneider Electric"/&gt;
+    &lt;preference name="LoadingPageDialog" value=""/&gt;
+    &lt;preference name="Orientation" value="portrait" /&gt;
+    </pre>
+
+<p>Without doing any coding, the default project can be run. You can either build the project to verify
+  there are no errors or you can run it. The run command does a build beforehand to check for errors as well.</p>
+
+<h3>Build or Run your app with Android or iOS</h3>
+<pre>cordova build ios</pre>
+or
+<pre>cordova run ios</pre>
+
+<br><br>
+
+
+<pre>cordova build android</pre>
+or
+<pre>cordova run android</pre>
+<br><br>
+</div>
+</script>
+
+
+<script type="text/ng-template" id="tips.html">
+  <div>
+
+    <h2>Cordova – Things To Know/Tips And Tricks</h2>
+    <p>Just because you code an application using PhoneGap and it works on one device (iPhone, for example) doesn’t
+      automatically mean that it will work on others. You may have to test and tweak for Android, Blackberry, or
+      Windows Phone devices. It's not always a "code once, deploy multiple times" scenario.</p>
+
+    <p>If your app needs to be distributed to multiple platforms, you may need a couple machines to get this done
+      if you aren’t utilizing Phonegap Build. For example:</p>
+    <ul>
+      <li>Android and blackberry can be done on windows and mac.</li>
+      <li>ios can only be done on a mac.</li>
+      <li>windows phone can only be done on windows.</li>
+    </ul>
+
+    <br>
+
+    <h3>TIPS</h3>
+
+    <ul class="list-group">
+      <li class="list-group-item">don't generate UI on the server, do it in javascript or html client side.  the delay and processing needed to
+        pull and then render from the server is far more taxing on the phone, requires more data usage and makes the
+        client wait much longer.</li>
+
+      <li class="list-group-item">try to avoid calling data/assets over the network as much as possible. any data that is static should
+        always be bundled in with the app. you can use text/json files, local storage or a local database. Try to
+        refrain from dependencies with a remote API — your application should work well in offline mode, because
+        you will never know if the person using the app has lost connectivity. Try to keep as many html, js, css or
+        any other assets local to the app as possible.</li>
+
+      <li class="list-group-item">when loading data, don't wait to render the UI until after data has been loaded.  Users need to see
+        something other than a white screen while their app is working.  Either render the UI with a loading
+        indicator inside the particular element, or display a full screen activity inidicator clearly showing
+        the user that something needs to happen before further interaction. The other benefit of showing the UI
+        first is that the user will barely notice any lag from when the data load is done to when it hits the screen.
+        If the UI and data are loaded together, it is very obvious that the app is working a little to hard to get
+        you the view you’ve requested.</li>
+
+
+      <li class="list-group-item">don't use javascript/jquery animations unless completely necessary.  CSS3 transitions and transforms
+        should always be your first go to because they force the GPU of the device to kick in and not just the cpu.
+        By default they will rely on your phones hardware acceleration for better performance.  javascript animations
+        require much more cpu that css3 for even the simplest of animations. Its still possible to bog your app
+        down with css animations, so use them wisely.</li>
+
+      <li class="list-group-item">Use FastClick. Mobile browsers automatically implement a 300ms delay to watch for taps.  Unless you have
+        an app that utilizes tapping, this delay during link and button clicks becomes very obvious to the user,
+        especially during page transitions or other features where youd expect an instant reaction from the app.
+        <a href="https://github.com/ftlabs/fastclick" target="_blank">https://github.com/ftlabs/fastclick</a></li>
+
+
+      <li class="list-group-item">Use image sprite sheets instead of individual image files.  having your app load in 1 sprite sheet
+        makes all of your image references load and render extremely fast.  Individual files obviously require
+        separate loading and depending on the image, it may take a while to render. Once the sprite sheet is
+        done loading, that asset shows immediately.</li>
+
+      <li class="list-group-item">Use shadows and gradients only when necessary.  They require more rendering power.</li>
+
+      <li class="list-group-item">Try to avoid using css position:fixed. it causes many problems with rendering, touch response and
+        has different issues between phone models and device OS's.</li>
+
+      <li class="list-group-item">Avoid unnecessary DOM access.  if you need to access an element multiple times, cache it in a variable
+        first, then do your processing.  Making your app look for the same element multiple times is a waste of
+        power.  This is true for web and desktop apps, but even more so for mobile.</li>
+
+      <li class="list-group-item">If using a framework, choose wisely.  the less bloat your app has, then better it will run.
+        don't choose a framework just because you like a small piece of it (transitions, UI component, etc).
+        Make sure that if you are going to use one, you use it because you are using every aspect of the
+        framework.  If possible, take out what you like form the framework and bring it into your app by
+        itself.  That way you avoid the excess bloat.</li>
+
+
+      <li class="list-group-item"><strong>TEST</strong>.  If you app isn't using any phonegap specific api calls, you can test every aspect of it in
+        Chrome or Safari and use the dev tools.  If you are using phonegap apis, make sure you install the
+        phonegap console plugin in your development version of your app so you can debug from your device
+        while connected to your computer.</li>
+    </ul>
+    <br><br>
+  </div>
+</script>
+
+<script type="text/ng-template" id="ui.html">
+<div>
+<h2>Schneider UI</h2>
+
+<!--start left drawer-->
+<div class="row">
+
+  <div class="col-md-12">
+
+    <h3>Left Side Drawer</h3>
+    The side drawer example is part of this docs page.  click the menu button in the top left
+    corner of the page to expand the side drawer. Optionally, you can swipe across the screen to the right with
+    your mouse and the menu will open as well.
+    <br><br>
+    This UI item is also part of an angular directive.  You need to include 5 files.<br><br>
+    <strong>CSS</strong><br>
+    angular-snap.css<br><br>
+    <strong>Javascript (loaded in this order)</strong><br>
+    vendor/jquery.js<br>
+    directives/snap.js<br>
+    directives/angular-snap.js<br>
+    directives/navmenu.js<br>
+<pre>
+
+&lt;!--snap-drawer is the directive part which holds your entire menu. the menuitemlist attribute contains your urls, and other menu options. these should be set inside a
+controller. in this example, the NavigationCtrl is being used--&gt;
+
+&lt;snap-drawer&gt;
+&lt;senav menuitemlist="menuItems" ng-controller="NavigationCtrl" &gt;&lt;/senav&gt;
+&lt;/snap-drawer&gt;
+
+&lt;!--the entire rest of your app should go in between the snap-content directive. everything inside this tag gets pushed to the side when the menu opens.
+the snap-options should be set in your controller as well. this will allow to to enable/disable swiping to open and also enable/disable the entire menu system--&gt;
+
+&lt;snap-content snap-options="snapOpts" class="scrollable"&gt;
+rest of app
+&lt;/snap-content&gt;
+
+&lt;!--example of controller--&gt;
+App.controller('NavigationCtrl', ['$scope', '$location','$rootScope', function ($scope, $location, $rootScope) {
+
+//by default we are disabling the right drawer menu. the schneider ui has not been completed for it yet.
+$rootScope.snapOpts = {disable: 'right',touchToDrag:true};
+
+//this function is required. it highlights the currently active link in the menu.  eventually it will be moved to the directive.
+$scope.isCurrentPath = function (path) {
+    return $location.path() == path;
+};
+
+//this is what sets up the entire menu.  the itemlisting is for your urls. containers sets booleans to show header, search and footers.
+$scope.menuItems = {
+    "itemlisting":[
+        {"url": "/ui", "hasicon": true, "icon": "se-icon se-icon-information", "title": "SCHNEIDER UI"},
+        {"url": "/fakeLink", "hasicon": true, "icon": "se-icon se-icon-information", "title": "FAKE LINK"}
+    ],
+    "containers":[
+        {"header": true, "search": true, "footer": true}
+    ]
+};
+
+}]);
+
+</pre>
+  </div>
+
+
+</div>
+<!--close left drawer-->
+
+<br><br>
+
+<!--start header-->
+<div class="row">
+
+  <div class="col-md-7">
+    <!--code-->
+    <h3>Header and Secondary Header</h3>
+<pre >
+&lt;nav class="navbar navbar-default" role="navigation"&gt;
+&lt;div class="container-fluid"&gt;
+&lt;div class="navbar-header"&gt;
+&lt;i class="glyphicon glyphicon-refresh navbar-secondary-icon-right"&gt;&lt;/i&gt;
+    &lt;button type="button" class="navbar-toggle"&gt;
+&lt;span class="sr-only"&gt;Toggle navigation&lt;/span&gt;
+    &lt;span class="icon-bar"&gt;&lt;/span&gt;
+    &lt;span class="icon-bar"&gt;&lt;/span&gt;
+    &lt;span class="icon-bar"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div class="navbar-application-name"&gt;App Name&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;/nav&gt;
+
+        &lt;!-- secondary navbar --&gt;
+        &lt;nav class="navbar navbar-secondary" role="navigation"&gt;
+        &lt;div class="container-fluid"&gt;
+        &lt;div class="navbar-header"&gt;
+        &lt;i class="navbar-secondary-settings"&gt;&lt;/i&gt;
+        &lt;i  class="glyphicon glyphicon-chevron-left navbar-secondary-icon-left"&gt;&lt;/i&gt;
+        &lt;div class="navbar-secondary-page-title"&gt;Page Title&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/nav&gt;
+</pre>
+  </div>
+
+  <div class="col-md-5">
+    <!--render-->
+    <div class="demo-sample">
+      <!-- top navbar -->
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <i class="glyphicon glyphicon-refresh navbar-secondary-icon-right"></i>
+            <button type="button" class="navbar-toggle">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-application-name">App Name</div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- secondary navbar -->
+      <nav class="navbar navbar-secondary" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <i class="navbar-secondary-settings"></i>
+            <i  class="glyphicon glyphicon-chevron-left navbar-secondary-icon-left"></i>
+            <div class="navbar-secondary-page-title">Page Title</div>
+          </div>
+        </div>
+      </nav>
+
+    </div>
+  </div>
+
+</div>
+<!--close header-->
+
+<br><br>
+
+<!--start login-->
+<div class="row">
+
+  <div class="col-md-7">
+    <!--code-->
+    <h3>Login Screen</h3>
+<pre>
+&lt;div class="container-fluid login"&gt;
+&lt;h1 class="login-title"&gt;Application Name&lt;/h1&gt;
+&lt;div class="login-version"&gt;Version Number&lt;/div&gt;
+&lt;form&gt;
+&lt;div class="form-group"&gt;
+&lt;input type="text" class="form-control input-lg" placeholder="Login" name="email"&gt;
+&lt;/div&gt;
+&lt;div class="form-group"&gt;
+&lt;input type="password" class="form-control input-lg" placeholder="Password" name="password"&gt;
+&lt;/div&gt;
+&lt;div class="form-group login-remember-me"&gt;
+&lt;label class="checkbox"&gt;
+&lt;input type="checkbox" class="form-control"&gt;
+Remember me
+&lt;/label&gt;
+&lt;/div&gt;
+&lt;a class="login-forgot-password-link"&gt;Forgot Password?&lt;/a&gt;
+&lt;input class="login-submit-btn" type="submit" value="Login"&gt;
+&lt;a class="login-create-account-link" href=""&gt;Create an account&lt;/a&gt;
+&lt;i class="login-logo"&gt;&lt;/i&gt;
+&lt;/form&gt;
+&lt;/div&gt;
+</pre>
+  </div>
+
+  <div class="col-md-5">
+    <!--render-->
+    <div class="demo-sample">
+      <div class="container-fluid login">
+        <h1 class="login-title">Application Name</h1>
+        <div class="login-version">Version Number</div>
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control input-lg" placeholder="Login" name="email">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control input-lg" placeholder="Password" name="password">
+          </div>
+          <div class="form-group login-remember-me">
+            <label class="checkbox">
+              <input type="checkbox" class="form-control">
+              Remember me
+            </label>
+          </div>
+          <a class="login-forgot-password-link">Forgot Password?</a>
+          <input class="login-submit-btn" type="submit" value="Login">
+          <a class="login-create-account-link" href="">Create an account</a>
+          <i class="login-logo"></i>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!--close login-->
+
+<br><br>
+
+<!--start tabs-->
+<div class="row">
+
+  <div class="col-md-7">
+    <!--code-->
+    <h3>Tabs</h3>
+<pre>
+&lt;!-- Swap out `.tabs-ios` for `.tabs-android` for top-style tab bar --&gt;
+&lt;div class="tab-container tabs-ios"&gt;
+&lt;ul class="tabs"&gt;
+&lt;li class="tab"&gt;&lt;i class="se-icon se-icon-graph-down"&gt;&lt;/i&gt;&lt;/li&gt;
+&lt;li class="tab"&gt;&lt;i class="se-icon se-icon-barchart-view"&gt;&lt;/i&gt;&lt;/li&gt;
+&lt;li class="tab active"&gt;&lt;i class="se-icon se-icon-eye"&gt;&lt;/i&gt;&lt;/li&gt;
+&lt;li class="tab"&gt;
+&lt;i class="se-icon se-icon-status-inquiry"&gt;&lt;/i&gt;
+&lt;div class="tab-badge tab-badge-danger"&gt;7&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="tab-content"&gt;
+An example of iOS style tabs
+&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+  </div>
+
+  <div class="col-md-5">
+    <!--render-->
+    <div class="demo-sample">
+      <!-- Swap out `.tabs-ios` for `.tabs-android` for top-style tab bar -->
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <i class="glyphicon glyphicon-refresh navbar-secondary-icon-right"></i>
+            <button type="button" class="navbar-toggle">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-application-name">App Name</div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- secondary navbar -->
+      <nav class="navbar navbar-secondary" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <i class="navbar-secondary-settings"></i>
+            <i  class="glyphicon glyphicon-chevron-left navbar-secondary-icon-left"></i>
+            <div class="navbar-secondary-page-title">Page Title</div>
+          </div>
+        </div>
+      </nav>
+      <div class="tab-container tabs-ios" style="margin-top: 8px;">
+        <ul class="tabs">
+          <li class="tab"><i class="se-icon se-icon-graph-down"></i></li>
+          <li class="tab"><i class="se-icon se-icon-barchart-view"></i></li>
+          <li class="tab active"><i class="se-icon se-icon-eye"></i></li>
+          <li class="tab ">
+            <i class="se-icon se-icon-status-inquiry"></i>
+            <div class="tab-badge tab-badge-danger">7</div>
+          </li>
+        </ul>
+        <div class="tab-content">
+          An example of iOS style tabs
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!--close tabs-->
+
+<br><br>
+
+<!--start content-->
+<div class="row">
+
+  <div class="col-md-7">
+    <!--code-->
+    <h3>Content Cards</h3>
+<pre>
+&lt;ul class="overview"&gt;
+&lt;li class="overview-card"&gt;
+    &lt;div class="overview-card-content"&gt;
+        &lt;div class="overview-card-graphic"&gt;
+            &lt;img src="http://placeimg.com/40/40/tech" alt=""&gt;
+        &lt;/div&gt;
+        &lt;div class="overview-card-details"&gt;
+            &lt;h4&gt;[heading]&lt;/h4&gt;
+            &lt;dl&gt;
+                &lt;dt&gt;[label]&lt;/dt&gt;
+                &lt;dd&gt;[value]&lt;/dd&gt;
+            &lt;/dl&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="overview-card-status-bar"&gt;
+        &lt;div class="overview-card-metric overview-card-metric-[danger|warning|info]"&gt;
+            &lt;div class="overview-card-metric-count"&gt;[value]&lt;/div&gt;
+            &lt;div class="overview-card-metric-label"&gt;[label]&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="overview-card"&gt;
+    &lt;div class="overview-card-content"&gt;
+        &lt;div class="overview-card-graphic"&gt;
+            &lt;img src="http://placeimg.com/40/40/tech" alt=""&gt;
+        &lt;/div&gt;
+        &lt;div class="overview-card-details"&gt;
+            &lt;h4&gt;[heading]&lt;/h4&gt;
+            &lt;dl&gt;
+                &lt;dt&gt;[label]&lt;/dt&gt;
+                &lt;dd&gt;[value]&lt;/dd&gt;
+            &lt;/dl&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="overview-card-status-bar"&gt;
+        &lt;div class="overview-card-metric overview-card-metric-[danger|warning|info]"&gt;
+            &lt;div class="overview-card-metric-count"&gt;[value]&lt;/div&gt;
+            &lt;div class="overview-card-metric-label"&gt;[label]&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+  </div>
+
+  <div class="col-md-5">
+    <!--render-->
+    <div class="demo-sample">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <i class="glyphicon glyphicon-refresh navbar-secondary-icon-right"></i>
+            <button type="button" class="navbar-toggle">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-application-name">App Name</div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- secondary navbar -->
+      <nav class="navbar navbar-secondary" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <i class="navbar-secondary-settings"></i>
+            <i  class="glyphicon glyphicon-chevron-left navbar-secondary-icon-left"></i>
+            <div class="navbar-secondary-page-title">Page Title</div>
+          </div>
+        </div>
+      </nav>
+      <ul class="overview">
+        <li class="overview-card">
+          <div class="overview-card-content">
+            <div class="overview-card-graphic">
+              <img src="http://placeimg.com/40/40/tech" alt="">
+            </div>
+            <div class="overview-card-details">
+              <h4>[heading]</h4>
+              <dl>
+                <dt>[label]</dt>
+                <dd>[value]</dd>
+              </dl>
+            </div>
+          </div>
+          <div class="overview-card-status-bar">
+            <div class="overview-card-metric overview-card-metric-[danger|warning|info]">
+              <div class="overview-card-metric-count">[value]</div>
+              <div class="overview-card-metric-label">[label]</div>
+            </div>
+          </div>
+        </li>
+        <li class="overview-card">
+          <div class="overview-card-content">
+            <div class="overview-card-graphic">
+              <img src="http://placeimg.com/40/40/tech" alt="">
+            </div>
+            <div class="overview-card-details">
+              <h4>[heading]</h4>
+              <dl>
+                <dt>[label]</dt>
+                <dd>[value]</dd>
+              </dl>
+            </div>
+          </div>
+          <div class="overview-card-status-bar">
+            <div class="overview-card-metric overview-card-metric-[danger|warning|info]">
+              <div class="overview-card-metric-count">[value]</div>
+              <div class="overview-card-metric-label">[label]</div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+<!--close content-->
+
+
+<br><br>
+
+<!--start list-->
+<div class="row">
+
+  <div class="col-md-7">
+    <!--code-->
+    <h3>Lists</h3>
+<pre>
+&lt;ul class="list"&gt;
+&lt;li class="list-item"&gt;
+   &lt;div class="item-graphic"&gt;
+       &lt;img src="http://placeimg.com/40/40/tech" alt=""&gt;
+   &lt;/div&gt;
+   &lt;div class="item-body"&gt;
+       &lt;div class="meta"&gt;25/12/13 17:45&lt;/div&gt;
+       &lt;h4&gt;Electropole&lt;/h4&gt;
+       &lt;p&gt;Risk Level 1&lt;/p&gt;
+       &lt;p&gt;Energy wastes during unoccupied periods and someone crossed the streams!&lt;/p&gt;
+   &lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="list-item"&gt;
+   &lt;div class="item-graphic"&gt;
+       &lt;img src="http://placeimg.com/40/40/tech" alt=""&gt;
+   &lt;/div&gt;
+   &lt;div class="item-body"&gt;
+       &lt;div class="meta"&gt;25/12/13 17:45&lt;/div&gt;
+       &lt;h4&gt;Electropole&lt;/h4&gt;
+       &lt;p&gt;Risk Level 1&lt;/p&gt;
+       &lt;p&gt;Energy wastes during unoccupied periods and someone crossed the streams!&lt;/p&gt;
+   &lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+  </div>
+
+  <div class="col-md-5">
+    <!--render-->
+    <div class="demo-sample">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <i class="glyphicon glyphicon-refresh navbar-secondary-icon-right"></i>
+            <button type="button" class="navbar-toggle">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-application-name">App Name</div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- secondary navbar -->
+      <nav class="navbar navbar-secondary" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <i class="navbar-secondary-settings"></i>
+            <i  class="glyphicon glyphicon-chevron-left navbar-secondary-icon-left"></i>
+            <div class="navbar-secondary-page-title">Page Title</div>
+          </div>
+        </div>
+      </nav>
+      <ul class="list">
+        <li class="list-item">
+          <div class="item-graphic">
+            <img src="http://placeimg.com/40/40/tech" alt="">
+          </div>
+          <div class="item-body">
+            <div class="meta">25/12/13 17:45</div>
+            <h4>Electropole</h4>
+            <p>Risk Level 1</p>
+            <p>Energy wastes during unoccupied periods and someone crossed the streams!</p>
+          </div>
+        </li>
+        <li class="list-item">
+          <div class="item-graphic">
+            <img src="http://placeimg.com/40/40/tech" alt="">
+          </div>
+          <div class="item-body">
+            <div class="meta">25/12/13 17:45</div>
+            <h4>Electropole</h4>
+            <p>Risk Level 1</p>
+            <p>Energy wastes during unoccupied periods and someone crossed the streams!</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+<!--close list-->
+
+
+<br><br>
+
+<!--start forms-->
+<div class="row">
+
+  <div class="col-md-7">
+    <!--code-->
+    <h3>Forms</h3>
+<pre>
+&lt;ul class="list-form"&gt;
+&lt;li class="list-form-group"&gt;
+   &lt;label for="protection-status" class="checkbox-toggle pull-right active" &gt;
+          &lt;span class="track"&gt;
+            &lt;span class="track-label"&gt;ON&lt;/span&gt;
+            &lt;span class="track-label"&gt;OFF&lt;/span&gt;
+          &lt;/span&gt;
+       &lt;span class="handle"&gt;&lt;/span&gt;
+       &lt;input type="checkbox" id="protection-status" &gt;
+   &lt;/label&gt;
+   Protection status
+&lt;/li&gt;
+&lt;li class="list-form-group"&gt;
+   &lt;label for="output-action" class="checkbox-toggle pull-right" &gt;
+          &lt;span class="track"&gt;
+            &lt;span class="track-label"&gt;ON&lt;/span&gt;
+            &lt;span class="track-label"&gt;OFF&lt;/span&gt;
+          &lt;/span&gt;
+       &lt;span class="handle"&gt;&lt;/span&gt;
+       &lt;input type="checkbox" id="output-action" &gt;
+   &lt;/label&gt;
+   Protection status
+&lt;/li&gt;
+&lt;li class="list-form-group"&gt;
+   &lt;div class="value"&gt;
+       1000 &lt;sub&gt;A&lt;/sub&gt;
+   &lt;/div&gt;
+   &lt;i class="se-icon se-icon-ground"&gt;&lt;/i&gt; Residiual
+&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+  </div>
+
+  <div class="col-md-5">
+    <!--render-->
+    <div class="demo-sample">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <i class="glyphicon glyphicon-refresh navbar-secondary-icon-right"></i>
+            <button type="button" class="navbar-toggle">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-application-name">App Name</div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- secondary navbar -->
+      <nav class="navbar navbar-secondary" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <i class="navbar-secondary-settings"></i>
+            <i  class="glyphicon glyphicon-chevron-left navbar-secondary-icon-left"></i>
+            <div class="navbar-secondary-page-title">Page Title</div>
+          </div>
+        </div>
+      </nav>
+      <div>
+
+        <ul class="list-form">
+          <li class="list-form-group">
+            <label for="protection-status" class="checkbox-toggle pull-right active" >
+                  <span class="track">
+                    <span class="track-label">ON</span>
+                    <span class="track-label">OFF</span>
+                  </span>
+              <span class="handle"></span>
+              <input type="checkbox" id="protection-status" >
+            </label>
+            Protection status
+          </li>
+          <li class="list-form-group">
+            <label for="output-action" class="checkbox-toggle pull-right" >
+                  <span class="track">
+                    <span class="track-label">ON</span>
+                    <span class="track-label">OFF</span>
+                  </span>
+              <span class="handle"></span>
+              <input type="checkbox" id="output-action" >
+            </label>
+            Protection status
+          </li>
+          <li class="list-form-group">
+            <div class="value">
+              1000 <sub>A</sub>
+            </div>
+            <i class="se-icon se-icon-ground"></i> Residiual
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+<!--close forms-->
+
+
+<br><br>
+
+<!--start Dialog-->
+<div class="row">
+
+  <div class="col-md-7">
+    <!--code-->
+    <h3>Dialog</h3>
+<pre>
+&lt;div class="dialog"&gt;
+    &lt;div class="btn btn-default"&gt;Cancel&lt;/div&gt;
+    &lt;div class="btn btn-default"&gt;Apply&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+  </div>
+
+  <div class="col-md-5">
+    <!--render-->
+    <div class="demo-sample">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <i class="glyphicon glyphicon-refresh navbar-secondary-icon-right"></i>
+            <button type="button" class="navbar-toggle">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-application-name">App Name</div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- secondary navbar -->
+      <nav class="navbar navbar-secondary" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <i class="navbar-secondary-settings"></i>
+            <i  class="glyphicon glyphicon-chevron-left navbar-secondary-icon-left"></i>
+            <div class="navbar-secondary-page-title">Page Title</div>
+          </div>
+        </div>
+      </nav>
+      <div class="dialog">
+        <div class="btn btn-default">Cancel</div>
+        <div class="btn btn-default">Apply</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!--close Dialog-->
+
+
+<br><br>
+
+<!--start popin-->
+<div class="row">
+
+  <div class="col-md-7">
+    <!--code-->
+    <h3>PopIn</h3>
+<pre>
+&lt;div class="popin fade in"&gt;
+&lt;div class="popin-dialog"&gt;
+    &lt;div class="popin-content"&gt;
+        &lt;div class="popin-header"&gt;
+            Bluetooth Peering
+        &lt;/div&gt;
+        &lt;div class="popin-body"&gt;
+            &lt;p&gt;
+                Please enter the peering code displayed on your equipment:
+            &lt;/p&gt;
+            &lt;input type="password" class="form-control" value="foobar"&gt;
+        &lt;/div&gt;
+        &lt;div class="popin-footer"&gt;
+            &lt;button class="btn btn-default"&gt;Cancel&lt;/button&gt;
+            &lt;button class="btn btn-success"&gt;OK&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+  </div>
+
+  <div class="col-md-5">
+    <!--render-->
+    <div class="demo-sample">
+      <div class="popin fade in">
+        <div class="popin-dialog">
+          <div class="popin-content">
+            <div class="popin-header">
+              Bluetooth Peering
+            </div>
+            <div class="popin-body">
+              <p>
+                Please enter the peering code displayed on your equipment:
+              </p>
+              <input type="password" class="form-control" value="foobar">
+            </div>
+            <div class="popin-footer">
+              <button class="btn btn-default">Cancel</button>
+              <button class="btn btn-success">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!--close popin-->
+
+
+<br><br>
+
+<!--start signup-->
+<div class="row">
+
+  <div class="col-md-7">
+    <!--code-->
+    <h3>Sign Up</h3>
+<pre>
+&lt;div class="container-fluid signup"&gt;
+&lt;h1 class="signup-title"&gt;Application Name&lt;/h1&gt;
+&lt;div class="signup-version"&gt;Version Number&lt;/div&gt;
+&lt;form&gt;
+   &lt;div class="form-group"&gt;
+       &lt;input type="text" class="form-control input-lg" placeholder="signup" name="email"&gt;
+   &lt;/div&gt;
+   &lt;div class="form-group"&gt;
+       &lt;input type="password" class="form-control input-lg" placeholder="Password" name="password"&gt;
+   &lt;/div&gt;
+   &lt;div class="form-group"&gt;
+       &lt;input type="password" class="form-control input-lg" placeholder="Confirm Password" name="confirm-password"&gt;
+   &lt;/div&gt;
+   &lt;input class="signup-submit-btn" type="submit" value="Sign Up"&gt;
+&lt;/form&gt;
+&lt;i class="signup-logo"&gt;&lt;/i&gt;
+&lt;/div&gt;
+</pre>
+  </div>
+
+  <div class="col-md-5">
+    <!--render-->
+    <div class="demo-sample">
+      <div class="container-fluid signup">
+        <h1 class="signup-title">Application Name</h1>
+        <div class="signup-version">Version Number</div>
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control input-lg" placeholder="signup" name="email">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control input-lg" placeholder="Password" name="password">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control input-lg" placeholder="Confirm Password" name="confirm-password">
+          </div>
+          <input class="signup-submit-btn" type="submit" value="Sign Up">
+        </form>
+        <i class="signup-logo"></i>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!--close signup-->
+
+
+<br><br>
+
+<!--start about-->
+<div class="row">
+
+  <div class="col-md-7">
+    <!--code-->
+    <h3>About Screen</h3>
+<pre>
+&lt;div class="about"&gt;
+&lt;div class="close"&gt;×&lt;/div&gt;
+&lt;i class="app-icon se-icon se-icon-diagnostic"&gt;&lt;/i&gt;
+&lt;div class="app-name"&gt;Application Name&lt;/div&gt;
+&lt;ul class="about-details"&gt;
+  &lt;li&gt;
+      &lt;div class="value"&gt;1.00.32&lt;/div&gt;
+      Version
+  &lt;/li&gt;
+  &lt;li&gt;
+      &lt;div class="value"&gt;WKJDofjwdf235FLDKSjkwof2038&lt;/div&gt;
+      Key
+  &lt;/li&gt;
+  &lt;li&gt;
+      &lt;div class="value"&gt;〉&lt;/div&gt;
+      Licenses & conditions
+  &lt;/li&gt;
+  &lt;li&gt;
+      &lt;div class="value"&gt;〉&lt;/div&gt;
+      Contact
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="copyright"&gt;© 2014 &lt;strong&gt;Schneider Electric&lt;/strong&gt;, &lt;br&gt;All rights reserved.&lt;/div&gt;
+&lt;i class="logo se-icon se-icon-SE_Logo"&gt;&lt;/i&gt;
+&lt;/div&gt;
+</pre>
+  </div>
+
+  <div class="col-md-5">
+    <!--render-->
+    <div class="demo-sample">
+      <div class="about">
+        <div class="close">×</div>
+        <i class="app-icon se-icon se-icon-diagnostic"></i>
+        <div class="app-name">Application Name</div>
+        <ul class="about-details">
+          <li>
+            <div class="value">1.00.32</div>
+            Version
+          </li>
+          <li>
+            <div class="value">WKJDofjwdf235FLDKSjkwof2038</div>
+            Key
+          </li>
+          <li>
+            <div class="value">〉</div>
+            Licenses & conditions
+          </li>
+          <li>
+            <div class="value">〉</div>
+            Contact
+          </li>
+        </ul>
+        <div class="copyright">© 2014 <strong>Schneider Electric</strong>, <br>All rights reserved.</div>
+        <i class="logo se-icon se-icon-SE_Logo"></i>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!--close about-->
+
+<br><br>
+
+<!--start forgot password-->
+<div class="row">
+
+  <div class="col-md-7">
+    <!--code-->
+    <h3>Forgot Password</h3>
+<pre>
+&lt;div class="container-fluid forgot-password"&gt;
+&lt;h1 class="forgot-password-title"&gt;Application Name&lt;/h1&gt;
+&lt;div class="forgot-password-version"&gt;Version Number&lt;/div&gt;
+&lt;h3 class="forgot-password-subhead"&gt;Forgot Password?&lt;/h3&gt;
+&lt;p class="description"&gt;
+    Enter your email address below and we'll send you a secure link to create a new password.
+&lt;/p&gt;
+&lt;form&gt;
+    &lt;div class="form-group"&gt;
+        &lt;input type="text" class="form-control input-lg" placeholder="Email" name="email"&gt;
+    &lt;/div&gt;
+    &lt;input class="forgot-password-submit-btn" type="submit" value="Send"&gt;
+&lt;/form&gt;
+&lt;i class="forgot-password-logo"&gt;&lt;/i&gt;
+&lt;/div&gt;
+</pre>
+  </div>
+
+  <div class="col-md-5">
+    <!--render-->
+    <div class="demo-sample">
+      <div class="container-fluid forgot-password">
+        <h1 class="forgot-password-title">Application Name</h1>
+        <div class="forgot-password-version">Version Number</div>
+        <h3 class="forgot-password-subhead">Forgot Password?</h3>
+        <p class="description">
+          Enter your email address below and we'll send you a secure link to create a new password.
+        </p>
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control input-lg" placeholder="Email" name="email">
+          </div>
+          <input class="forgot-password-submit-btn" type="submit" value="Send">
+        </form>
+        <i class="forgot-password-logo"></i>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!--close forgot password-->
+
+<br><br>
+
+<!--start change password-->
+<div class="row">
+
+  <div class="col-md-7">
+    <!--code-->
+    <h3>Reset Password</h3>
+<pre>
+&lt;div class="container-fluid reset-password"&gt;
+&lt;h1 class="reset-password-title"&gt;Application Name&lt;/h1&gt;
+&lt;div class="reset-password-version"&gt;Version Number&lt;/div&gt;
+&lt;h2 class="forgot-password-subhead"&gt;Reset Password&lt;/h2&gt;
+&lt;form&gt;
+    &lt;div class="form-group"&gt;
+        &lt;input type="password" class="form-control input-lg" placeholder="Current Password" name="current-password"&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;input type="password" class="form-control input-lg" placeholder="New Password" name="new-password"&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;input type="password" class="form-control input-lg" placeholder="Confirm Password" name="confirm-password"&gt;
+    &lt;/div&gt;
+    &lt;input class="reset-password-submit-btn" type="submit" value="Change password"&gt;
+&lt;/form&gt;
+&lt;i class="reset-password-logo"&gt;&lt;/i&gt;
+&lt;/div&gt;
+</pre>
+  </div>
+
+  <div class="col-md-5">
+    <!--render-->
+    <div class="demo-sample">
+      <div class="container-fluid reset-password">
+        <h1 class="reset-password-title">Application Name</h1>
+        <div class="reset-password-version">Version Number</div>
+        <h2 class="forgot-password-subhead">Reset Password</h2>
+        <form>
+          <div class="form-group">
+            <input type="password" class="form-control input-lg" placeholder="Current Password" name="current-password">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control input-lg" placeholder="New Password" name="new-password">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control input-lg" placeholder="Confirm Password" name="confirm-password">
+          </div>
+          <input class="reset-password-submit-btn" type="submit" value="Change password">
+        </form>
+        <i class="reset-password-logo"></i>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!--close change password-->
+
+</div>
+</script>
+
+<script type="text/ng-template" id="icons.html">
+<div>
+<h2>Bootstrap And Schneider Icons</h2>
+
+<!--start glyphicons-->
+<div class="row">
+
+<div class="col-md-12">
+<h3>Bootstrap Glyphicons</h3>
+<h5>Usage Example</h5>
+<pre>
+    &lt;i class="glyphicon glyphicon-asterisk"&gt;&lt;/i&gt;
+</pre>
+<div class="bs-glyphicons">
+<ul class="bs-glyphicons-list">
+
+<li>
+  <span class="glyphicon glyphicon-asterisk"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-asterisk</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-plus"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-plus</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-euro"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-euro</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-minus"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-minus</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-cloud"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-cloud</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-envelope"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-envelope</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-pencil"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-pencil</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-glass"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-glass</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-music"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-music</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-search"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-search</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-heart"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-heart</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-star"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-star</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-star-empty"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-star-empty</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-user"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-user</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-film"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-film</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-th-large"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-th-large</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-th"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-th</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-th-list"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-th-list</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-ok"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-ok</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-remove"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-remove</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-zoom-in"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-zoom-in</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-zoom-out"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-zoom-out</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-off"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-off</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-signal"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-signal</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-cog"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-cog</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-trash"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-trash</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-home"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-home</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-file"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-file</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-time"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-time</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-road"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-road</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-download-alt"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-download-alt</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-download"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-download</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-upload"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-upload</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-inbox"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-inbox</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-play-circle"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-play-circle</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-repeat"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-repeat</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-refresh"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-refresh</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-list-alt"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-list-alt</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-lock"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-lock</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-flag"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-flag</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-headphones"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-headphones</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-volume-off"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-volume-off</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-volume-down"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-volume-down</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-volume-up"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-volume-up</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-qrcode"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-qrcode</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-barcode"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-barcode</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-tag"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-tag</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-tags"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-tags</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-book"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-book</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-bookmark"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-bookmark</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-print"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-print</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-camera"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-camera</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-font"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-font</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-bold"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-bold</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-italic"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-italic</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-text-height"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-text-height</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-text-width"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-text-width</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-align-left"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-align-left</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-align-center"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-align-center</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-align-right"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-align-right</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-align-justify"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-align-justify</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-list"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-list</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-indent-left"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-indent-left</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-indent-right"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-indent-right</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-facetime-video"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-facetime-video</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-picture"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-picture</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-map-marker"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-map-marker</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-adjust"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-adjust</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-tint"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-tint</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-edit"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-edit</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-share"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-share</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-check"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-check</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-move"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-move</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-step-backward"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-step-backward</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-fast-backward"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-fast-backward</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-backward"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-backward</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-play"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-play</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-pause"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-pause</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-stop"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-stop</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-forward"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-forward</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-fast-forward"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-fast-forward</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-step-forward"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-step-forward</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-eject"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-eject</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-chevron-left"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-chevron-left</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-chevron-right"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-chevron-right</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-plus-sign"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-plus-sign</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-minus-sign"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-minus-sign</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-remove-sign"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-remove-sign</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-ok-sign"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-ok-sign</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-question-sign"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-question-sign</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-info-sign"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-info-sign</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-screenshot"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-screenshot</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-remove-circle"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-remove-circle</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-ok-circle"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-ok-circle</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-ban-circle"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-ban-circle</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-arrow-left"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-arrow-left</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-arrow-right"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-arrow-right</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-arrow-up"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-arrow-up</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-arrow-down"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-arrow-down</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-share-alt"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-share-alt</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-resize-full"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-resize-full</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-resize-small"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-resize-small</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-exclamation-sign"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-exclamation-sign</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-gift"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-gift</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-leaf"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-leaf</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-fire"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-fire</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-eye-open"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-eye-open</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-eye-close"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-eye-close</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-warning-sign"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-warning-sign</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-plane"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-plane</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-calendar"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-calendar</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-random"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-random</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-comment"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-comment</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-magnet"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-magnet</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-chevron-up"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-chevron-up</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-chevron-down"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-chevron-down</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-retweet"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-retweet</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-shopping-cart"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-shopping-cart</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-folder-close"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-folder-close</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-folder-open"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-folder-open</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-resize-vertical"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-resize-vertical</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-resize-horizontal"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-resize-horizontal</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-hdd"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-hdd</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-bullhorn"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-bullhorn</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-bell"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-bell</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-certificate"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-certificate</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-thumbs-up"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-thumbs-up</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-thumbs-down"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-thumbs-down</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-hand-right"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-hand-right</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-hand-left"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-hand-left</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-hand-up"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-hand-up</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-hand-down"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-hand-down</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-circle-arrow-right"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-circle-arrow-right</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-circle-arrow-left"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-circle-arrow-left</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-circle-arrow-up"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-circle-arrow-up</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-circle-arrow-down"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-circle-arrow-down</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-globe"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-globe</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-wrench"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-wrench</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-tasks"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-tasks</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-filter"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-filter</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-briefcase"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-briefcase</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-fullscreen"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-fullscreen</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-dashboard"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-dashboard</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-paperclip"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-paperclip</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-heart-empty"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-heart-empty</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-link"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-link</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-phone"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-phone</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-pushpin"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-pushpin</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-usd"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-usd</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-gbp"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-gbp</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-sort"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-sort</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-sort-by-alphabet"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-sort-by-alphabet</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-sort-by-alphabet-alt"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-sort-by-alphabet-alt</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-sort-by-order"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-sort-by-order</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-sort-by-order-alt"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-sort-by-order-alt</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-sort-by-attributes"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-sort-by-attributes</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-sort-by-attributes-alt</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-unchecked"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-unchecked</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-expand"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-expand</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-collapse-down"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-collapse-down</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-collapse-up"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-collapse-up</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-log-in"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-log-in</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-flash"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-flash</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-log-out"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-log-out</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-new-window"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-new-window</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-record"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-record</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-save"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-save</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-open"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-open</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-saved"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-saved</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-import"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-import</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-export"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-export</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-send"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-send</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-floppy-disk"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-floppy-disk</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-floppy-saved"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-floppy-saved</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-floppy-remove"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-floppy-remove</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-floppy-save"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-floppy-save</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-floppy-open"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-floppy-open</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-credit-card"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-credit-card</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-transfer"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-transfer</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-cutlery"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-cutlery</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-header"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-header</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-compressed"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-compressed</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-earphone"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-earphone</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-phone-alt"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-phone-alt</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-tower"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-tower</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-stats"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-stats</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-sd-video"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-sd-video</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-hd-video"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-hd-video</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-subtitles"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-subtitles</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-sound-stereo"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-sound-stereo</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-sound-dolby"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-sound-dolby</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-sound-5-1"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-sound-5-1</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-sound-6-1"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-sound-6-1</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-sound-7-1"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-sound-7-1</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-copyright-mark"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-copyright-mark</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-registration-mark"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-registration-mark</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-cloud-download"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-cloud-download</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-cloud-upload"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-cloud-upload</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-tree-conifer"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-tree-conifer</span>
+</li>
+
+<li>
+  <span class="glyphicon glyphicon-tree-deciduous"></span>
+  <span class="glyphicon-class">glyphicon glyphicon-tree-deciduous</span>
+</li>
+
+</ul>
+</div>
+
+</div>
+</div>
+<!--close glyphicons-->
+
+<hr>
+<!--start SE Pictograms-->
+<div class="row">
+
+<div class="col-md-12">
+<h3>Schneider Pictograms</h3>
+<h5>Usage Example</h5>
+<pre>
+    &lt;i class="se-icon se-icon-cold"&gt;&lt;/i&gt;
+</pre>
+<div class="bs-glyphicons">
+<ul class="bs-glyphicons-list picto">
+<li><span class="se-icon se-icon-on-off"></span></li>
+<li><span class="se-icon se-icon-off"></span></li>
+<li><span class="se-icon se-icon-on"></span></li>
+<li><span class="se-icon se-icon-standby"></span></li>
+<li><span class="se-icon se-icon-normal-run-next"></span></li>
+<li><span class="se-icon se-icon-fast-run"></span></li>
+<li><span class="se-icon se-icon-continued"></span></li>
+<li><span class="se-icon se-icon-reset"></span></li>
+<li><span class="se-icon se-icon-test"></span></li>
+<li><span class="se-icon se-icon-light-test"></span></li>
+<li><span class="se-icon se-icon-battery-test"></span></li>
+<li><span class="se-icon se-icon-manual-control"></span></li>
+<li><span class="se-icon se-icon-diagnostic"></span></li>
+<li><span class="se-icon se-icon-maintenance"></span></li>
+<li><span class="se-icon se-icon-adjustment"></span></li>
+<li><span class="se-icon se-icon-plus-polarity"></span></li>
+<li><span class="se-icon se-icon-minus-polarity"></span></li>
+<li><span class="se-icon se-icon-setting"></span></li>
+<li><span class="se-icon se-icon-editor"></span></li>
+<li><span class="se-icon se-icon-cut"></span></li>
+<li><span class="se-icon se-icon-measurement"></span></li>
+<li><span class="se-icon se-icon-eco-button"></span></li>
+<li><span class="se-icon se-icon-horn"></span></li>
+<li><span class="se-icon se-icon-horn-off"></span></li>
+<li><span class="se-icon se-icon-lighting"></span></li>
+<li><span class="se-icon se-icon-spring-released"></span></li>
+<li><span class="se-icon se-icon-compressed-spring"></span></li>
+<li><span class="se-icon se-icon-hp-sound"></span></li>
+<li><span class="se-icon se-icon-loudspeaker"></span></li>
+<li><span class="se-icon se-icon-hp-sound-off"></span></li>
+<li><span class="se-icon se-icon-rotation-arrow"></span></li>
+<li><span class="se-icon se-icon-arrow"></span></li>
+<li><span class="se-icon se-icon-pointer"></span></li>
+<li><span class="se-icon se-icon-remote-control"></span></li>
+<li><span class="se-icon se-icon-local-control"></span></li>
+<li><span class="se-icon se-icon-saw-cut"></span></li>
+<li><span class="se-icon se-icon-locking"></span></li>
+<li><span class="se-icon se-icon-home"></span></li>
+<li><span class="se-icon se-icon-temperature"></span></li>
+<li><span class="se-icon se-icon-cold"></span></li>
+<li><span class="se-icon se-icon-hot-heating"></span></li>
+<li><span class="se-icon se-icon-air-conditioning"></span></li>
+<li><span class="se-icon se-icon-internet"></span></li>
+<li><span class="se-icon se-icon-data-transfer"></span></li>
+<li><span class="se-icon se-icon-internal-data-transfer"></span></li>
+<li><span class="se-icon se-icon-data-transfer-out"></span></li>
+<li><span class="se-icon se-icon-data-transfer-in"></span></li>
+<li><span class="se-icon se-icon-day-night-mode"></span></li>
+<li><span class="se-icon se-icon-day-mode"></span></li>
+<li><span class="se-icon se-icon-night-mode"></span></li>
+<li><span class="se-icon se-icon-general-pile-on-battery"></span></li>
+<li><span class="se-icon se-icon-pile-battery-check"></span></li>
+<li><span class="se-icon se-icon-general-battery"></span></li>
+<li><span class="se-icon se-icon-battery-check"></span></li>
+<li><span class="se-icon se-icon-battery-ratio"></span></li>
+<li><span class="se-icon se-icon-alternating-battery"></span></li>
+<li><span class="se-icon se-icon-battery-empty"></span></li>
+<li><span class="se-icon se-icon-empty-battery"></span></li>
+<li><span class="se-icon se-icon-battery-charging"></span></li>
+<li><span class="se-icon se-icon-check-battery"></span></li>
+<li><span class="se-icon se-icon-load-100"></span></li>
+<li><span class="se-icon se-icon-electric-overload"></span></li>
+<li><span class="se-icon se-icon-cad-view"></span></li>
+<li><span class="se-icon se-icon-new"></span></li>
+<li><span class="se-icon se-icon-open"></span></li>
+<li><span class="se-icon se-icon-save"></span></li>
+<li><span class="se-icon se-icon-download"></span></li>
+<li><span class="se-icon se-icon-upload"></span></li>
+<li><span class="se-icon se-icon-print"></span></li>
+<li><span class="se-icon se-icon-previous"></span></li>
+<li><span class="se-icon se-icon-next"></span></li>
+<li><span class="se-icon se-icon-copy"></span></li>
+<li><span class="se-icon se-icon-stick"></span></li>
+<li><span class="se-icon se-icon-help"></span></li>
+<li><span class="se-icon se-icon-read-user-manual"></span></li>
+<li><span class="se-icon se-icon-system-faults-read-user-manual"></span></li>
+<li><span class="se-icon se-icon-status-inquiry"></span></li>
+<li><span class="se-icon se-icon-mail"></span></li>
+<li><span class="se-icon se-icon-new-mail"></span></li>
+<li><span class="se-icon se-icon-send-mail"></span></li>
+<li><span class="se-icon se-icon-get-mail"></span></li>
+<li><span class="se-icon se-icon-forward-mail"></span></li>
+<li><span class="se-icon se-icon-reply-mail"></span></li>
+<li><span class="se-icon se-icon-reply-all"></span></li>
+<li><span class="se-icon se-icon-attach"></span></li>
+<li><span class="se-icon se-icon-historic"></span></li>
+<li><span class="se-icon se-icon-alarm-historic"></span></li>
+<li><span class="se-icon se-icon-phone-contacts"></span></li>
+<li><span class="se-icon se-icon-zoom-plus"></span></li>
+<li><span class="se-icon se-icon-zoom-minus"></span></li>
+<li><span class="se-icon se-icon-barchart-view"></span></li>
+<li><span class="se-icon se-icon-digital-view"></span></li>
+<li><span class="se-icon se-icon-media"></span></li>
+<li><span class="se-icon se-icon-music"></span></li>
+<li><span class="se-icon se-icon-picture"></span></li>
+<li><span class="se-icon se-icon-tv"></span></li>
+<li><span class="se-icon se-icon-threshold"></span></li>
+<li><span class="se-icon se-icon-exceed-threshold"></span></li>
+<li><span class="se-icon se-icon-selection"></span></li>
+<li><span class="se-icon se-icon-close"></span></li>
+<li><span class="se-icon se-icon-information"></span></li>
+<li><span class="se-icon se-icon-help2"></span></li>
+<li><span class="se-icon se-icon-ip-phone"></span></li>
+<li><span class="se-icon se-icon-smart-phone"></span></li>
+<li><span class="se-icon se-icon-upgrade"></span></li>
+<li><span class="se-icon se-icon-communication-bubbles"></span></li>
+<li><span class="se-icon se-icon-brightness-contrast"></span></li>
+<li><span class="se-icon se-icon-china-map"></span></li>
+<li><span class="se-icon se-icon-up-arrow"></span></li>
+<li><span class="se-icon se-icon-down-arrow"></span></li>
+<li><span class="se-icon se-icon-programmable-timer"></span></li>
+<li><span class="se-icon se-icon-light-tube"></span></li>
+<li><span class="se-icon se-icon-cloud"></span></li>
+<li><span class="se-icon se-icon-usb"></span></li>
+<li><span class="se-icon se-icon-vert-wireless"></span></li>
+<li><span class="se-icon se-icon-bluetooth"></span></li>
+<li><span class="se-icon se-icon-zigbee"></span></li>
+<li><span class="se-icon se-icon-input-output"></span></li>
+<li><span class="se-icon se-icon-input"></span></li>
+<li><span class="se-icon se-icon-output"></span></li>
+<li><span class="se-icon se-icon-usb-power"></span></li>
+<li><span class="se-icon se-icon-ethernet"></span></li>
+<li><span class="se-icon se-icon-serial-port"></span></li>
+<li><span class="se-icon se-icon-headphone"></span></li>
+<li><span class="se-icon se-icon-table-microphone"></span></li>
+<li><span class="se-icon se-icon-slot"></span></li>
+<li><span class="se-icon se-icon-general-danger"></span></li>
+<li><span class="se-icon se-icon-electric-danger"></span></li>
+<li><span class="se-icon se-icon-electric-danger-2-x"></span></li>
+<li><span class="se-icon se-icon-electrostatic"></span></li>
+<li><span class="se-icon se-icon-hot-surface"></span></li>
+<li><span class="se-icon se-icon-electrical-vehicle"></span></li>
+<li><span class="se-icon se-icon-electrical-scooter"></span></li>
+<li><span class="se-icon se-icon-schuko-socket"></span></li>
+<li><span class="se-icon se-icon-mennekes-socket"></span></li>
+<li><span class="se-icon se-icon-type-3-socket"></span></li>
+<li><span class="se-icon se-icon-badge-position"></span></li>
+<li><span class="se-icon se-icon-direct-current"></span></li>
+<li><span class="se-icon se-icon-alternating-current"></span></li>
+<li><span class="se-icon se-icon-both-direct-and-alternating-current"></span></li>
+<li><span class="se-icon se-icon-frame-chassis"></span></li>
+<li><span class="se-icon se-icon-ground"></span></li>
+<li><span class="se-icon se-icon-noiseless-earth"></span></li>
+<li><span class="se-icon se-icon-protective-ground"></span></li>
+<li><span class="se-icon se-icon-groundfault"></span></li>
+<li><span class="se-icon se-icon-transformer-12"></span></li>
+<li><span class="se-icon se-icon-fuse-10"></span></li>
+<li><span class="se-icon se-icon-capacitor"></span></li>
+<li><span class="se-icon se-icon-dc-ac-converter"></span></li>
+<li><span class="se-icon se-icon-electrical-fault"></span></li>
+<li><span class="se-icon se-icon-lightning-protection"></span></li>
+<li><span class="se-icon se-icon-class-ii"></span></li>
+<li><span class="se-icon se-icon-thermal-overload"></span></li>
+<li><span class="se-icon se-icon-phase-overcurrent"></span></li>
+<li><span class="se-icon se-icon-earth-overcurrent"></span></li>
+<li><span class="se-icon se-icon-inductor"></span></li>
+<li><span class="se-icon se-icon-discharge-protect"></span></li>
+<li><span class="se-icon se-icon-pulse"></span></li>
+<li><span class="se-icon se-icon-no-blackout"></span></li>
+<li><span class="se-icon se-icon-omega"></span></li>
+<li><span class="se-icon se-icon-automatic-voltage-regulator"></span></li>
+<li><span class="se-icon se-icon-transformer"></span></li>
+<li><span class="se-icon se-icon-repartitor"></span></li>
+<li><span class="se-icon se-icon-front-door"></span></li>
+<li><span class="se-icon se-icon-bedroom"></span></li>
+<li><span class="se-icon se-icon-lounge"></span></li>
+<li><span class="se-icon se-icon-kitchen"></span></li>
+<li><span class="se-icon se-icon-dining-room"></span></li>
+<li><span class="se-icon se-icon-stairs"></span></li>
+<li><span class="se-icon se-icon-garage"></span></li>
+<li><span class="se-icon se-icon-garden"></span></li>
+<li><span class="se-icon se-icon-bathroom"></span></li>
+<li><span class="se-icon se-icon-dressing"></span></li>
+<li><span class="se-icon se-icon-terrace"></span></li>
+<li><span class="se-icon se-icon-swimming-pool"></span></li>
+<li><span class="se-icon se-icon-at-home"></span></li>
+<li><span class="se-icon se-icon-out-of-home"></span></li>
+<li><span class="se-icon se-icon-home-locking"></span></li>
+<li><span class="se-icon se-icon-home-unlocking"></span></li>
+<li><span class="se-icon se-icon-blind"></span></li>
+<li><span class="se-icon se-icon-blind-down"></span></li>
+<li><span class="se-icon se-icon-blind-up"></span></li>
+<li><span class="se-icon se-icon-roller-shutter"></span></li>
+<li><span class="se-icon se-icon-roller-shutter-down"></span></li>
+<li><span class="se-icon se-icon-roller-shutter-up"></span></li>
+<li><span class="se-icon se-icon-garage-door"></span></li>
+<li><span class="se-icon se-icon-garage-door-down"></span></li>
+<li><span class="se-icon se-icon-garage-door-up"></span></li>
+<li><span class="se-icon se-icon-blind-slat-close"></span></li>
+<li><span class="se-icon se-icon-blind-slat-open"></span></li>
+<li><span class="se-icon se-icon-automatic-watering"></span></li>
+<li><span class="se-icon se-icon-ceiling-lamp"></span></li>
+<li><span class="se-icon se-icon-floor-lamp"></span></li>
+<li><span class="se-icon se-icon-spot"></span></li>
+<li><span class="se-icon se-icon-door"></span></li>
+<li><span class="se-icon se-icon-window"></span></li>
+<li><span class="se-icon se-icon-bell"></span></li>
+<li><span class="se-icon se-icon-washing-machine"></span></li>
+<li><span class="se-icon se-icon-dishwasher"></span></li>
+<li><span class="se-icon se-icon-tumble-dryer"></span></li>
+<li><span class="se-icon se-icon-oven"></span></li>
+<li><span class="se-icon se-icon-microwave"></span></li>
+<li><span class="se-icon se-icon-boiler"></span></li>
+<li><span class="se-icon se-icon-cooktop"></span></li>
+<li><span class="se-icon se-icon-electric-heater"></span></li>
+<li><span class="se-icon se-icon-heating-floor"></span></li>
+<li><span class="se-icon se-icon-refrigerator"></span></li>
+<li><span class="se-icon se-icon-freezer"></span></li>
+<li><span class="se-icon se-icon-water-heater"></span></li>
+<li><span class="se-icon se-icon-solar-water-heater"></span></li>
+<li><span class="se-icon se-icon-pc"></span></li>
+<li><span class="se-icon se-icon-laptop"></span></li>
+<li><span class="se-icon se-icon-child-protection"></span></li>
+<li><span class="se-icon se-icon-screwless"></span></li>
+<li><span class="se-icon se-icon-silence-sw"></span></li>
+<li><span class="se-icon se-icon-time-saving"></span></li>
+<li><span class="se-icon se-icon-room-service"></span></li>
+<li><span class="se-icon se-icon-comfort"></span></li>
+<li><span class="se-icon se-icon-do-not-disturb"></span></li>
+<li><span class="se-icon se-icon-restaurant"></span></li>
+<li><span class="se-icon se-icon-toilet"></span></li>
+<li><span class="se-icon se-icon-watching-tv"></span></li>
+<li><span class="se-icon se-icon-household"></span></li>
+<li><span class="se-icon se-icon-key-card"></span></li>
+<li><span class="se-icon se-icon-nurse"></span></li>
+<li><span class="se-icon se-icon-solarium"></span></li>
+<li><span class="se-icon se-icon-reading"></span></li>
+<li><span class="se-icon se-icon-please-wait"></span></li>
+<li><span class="se-icon se-icon-please-clean"></span></li>
+<li><span class="se-icon se-icon-shaver"></span></li>
+<li><span class="se-icon se-icon-open-the-curtains"></span></li>
+<li><span class="se-icon se-icon-close-the-curtains"></span></li>
+<li><span class="se-icon se-icon-radio-fm"></span></li>
+<li><span class="se-icon se-icon-remote-tv"></span></li>
+<li><span class="se-icon se-icon-fax"></span></li>
+<li><span class="se-icon se-icon-residential"></span></li>
+<li><span class="se-icon se-icon-industry"></span></li>
+<li><span class="se-icon se-icon-energy-infrastructure"></span></li>
+<li><span class="se-icon se-icon-buildings"></span></li>
+<li><span class="se-icon se-icon-datacenter"></span></li>
+<li><span class="se-icon se-icon-airport"></span></li>
+<li><span class="se-icon se-icon-automotive"></span></li>
+<li><span class="se-icon se-icon-hospital"></span></li>
+<li><span class="se-icon se-icon-marine"></span></li>
+<li><span class="se-icon se-icon-retail"></span></li>
+<li><span class="se-icon se-icon-hotels"></span></li>
+<li><span class="se-icon se-icon-packaging"></span></li>
+<li><span class="se-icon se-icon-material-handling"></span></li>
+<li><span class="se-icon se-icon-hoisting"></span></li>
+<li><span class="se-icon se-icon-textile"></span></li>
+<li><span class="se-icon se-icon-hvac"></span></li>
+<li><span class="se-icon se-icon-it"></span></li>
+<li><span class="se-icon se-icon-lift"></span></li>
+<li><span class="se-icon se-icon-machines"></span></li>
+<li><span class="se-icon se-icon-rail"></span></li>
+<li><span class="se-icon se-icon-panelbuilders"></span></li>
+<li><span class="se-icon se-icon-electrical-energy"></span></li>
+<li><span class="se-icon se-icon-windfarm"></span></li>
+<li><span class="se-icon se-icon-thermal-power"></span></li>
+<li><span class="se-icon se-icon-nuclear"></span></li>
+<li><span class="se-icon se-icon-hydro"></span></li>
+<li><span class="se-icon se-icon-mining-minerals-metals"></span></li>
+<li><span class="se-icon se-icon-cement"></span></li>
+<li><span class="se-icon se-icon-mining"></span></li>
+<li><span class="se-icon se-icon-food-and-beverages"></span></li>
+<li><span class="se-icon se-icon-milk"></span></li>
+<li><span class="se-icon se-icon-drinks"></span></li>
+<li><span class="se-icon se-icon-beer"></span></li>
+<li><span class="se-icon se-icon-biscuit"></span></li>
+<li><span class="se-icon se-icon-pet-food"></span></li>
+<li><span class="se-icon se-icon-water"></span></li>
+<li><span class="se-icon se-icon-drinking-water"></span></li>
+<li><span class="se-icon se-icon-wastewater"></span></li>
+<li><span class="se-icon se-icon-desalination"></span></li>
+<li><span class="se-icon se-icon-oil-and-gas"></span></li>
+<li><span class="se-icon se-icon-og-off-shore"></span></li>
+<li><span class="se-icon se-icon-og-on-shore"></span></li>
+<li><span class="se-icon se-icon-og-pipeline"></span></li>
+<li><span class="se-icon se-icon-og-refinery"></span></li>
+<li><span class="se-icon se-icon-tank-farm"></span></li>
+<li><span class="se-icon se-icon-services"></span></li>
+<li><span class="se-icon se-icon-men"></span></li>
+<li><span class="se-icon se-icon-eye"></span></li>
+<li><span class="se-icon se-icon-running-man"></span></li>
+<li><span class="se-icon se-icon-handshake"></span></li>
+<li><span class="se-icon se-icon-mouth"></span></li>
+<li><span class="se-icon se-icon-ear"></span></li>
+<li><span class="se-icon se-icon-light"></span></li>
+<li><span class="se-icon se-icon-search"></span></li>
+<li><span class="se-icon se-icon-flat-screen"></span></li>
+<li><span class="se-icon se-icon-plug"></span></li>
+<li><span class="se-icon se-icon-plug-and-play"></span></li>
+<li><span class="se-icon se-icon-helmet"></span></li>
+<li><span class="se-icon se-icon-electronic-surveillance"></span></li>
+<li><span class="se-icon se-icon-tested-validated"></span></li>
+<li><span class="se-icon se-icon-compact"></span></li>
+<li><span class="se-icon se-icon-lock"></span></li>
+<li><span class="se-icon se-icon-horz-wireless"></span></li>
+<li><span class="se-icon se-icon-compact-fluorescent-lamp"></span></li>
+<li><span class="se-icon se-icon-graph-down"></span></li>
+<li><span class="se-icon se-icon-graph-up"></span></li>
+<li><span class="se-icon se-icon-time"></span></li>
+<li><span class="se-icon se-icon-continuity"></span></li>
+<li><span class="se-icon se-icon-flexibility"></span></li>
+<li><span class="se-icon se-icon-critical-power"></span></li>
+<li><span class="se-icon se-icon-education"></span></li>
+<li><span class="se-icon se-icon-asset-optimization"></span></li>
+<li><span class="se-icon se-icon-puzzle"></span></li>
+<li><span class="se-icon se-icon-puzzle-2"></span></li>
+<li><span class="se-icon se-icon-flag"></span></li>
+<li><span class="se-icon se-icon-plug-2"></span></li>
+<li><span class="se-icon se-icon-earth-america"></span></li>
+<li><span class="se-icon se-icon-earth-europe-africa"></span></li>
+<li><span class="se-icon se-icon-earth-pacific"></span></li>
+<li><span class="se-icon se-icon-earth-arrow"></span></li>
+<li><span class="se-icon se-icon-france"></span></li>
+<li><span class="se-icon se-icon-sun"></span></li>
+<li><span class="se-icon se-icon-lightning"></span></li>
+<li><span class="se-icon se-icon-flower"></span></li>
+<li><span class="se-icon se-icon-star-2"></span></li>
+<li><span class="se-icon se-icon-gift"></span></li>
+<li><span class="se-icon se-icon-box"></span></li>
+<li><span class="se-icon se-icon-suitcase"></span></li>
+<li><span class="se-icon se-icon-folder"></span></li>
+<li><span class="se-icon se-icon-book"></span></li>
+<li><span class="se-icon se-icon-brochure"></span></li>
+<li><span class="se-icon se-icon-pen"></span></li>
+<li><span class="se-icon se-icon-pencil"></span></li>
+<li><span class="se-icon se-icon-microscope"></span></li>
+<li><span class="se-icon se-icon-umbrella"></span></li>
+<li><span class="se-icon se-icon-screwdriver"></span></li>
+<li><span class="se-icon se-icon-tools"></span></li>
+<li><span class="se-icon se-icon-dustbin"></span></li>
+<li><span class="se-icon se-icon-headset"></span></li>
+<li><span class="se-icon se-icon-ruler"></span></li>
+<li><span class="se-icon se-icon-key"></span></li>
+<li><span class="se-icon se-icon-video"></span></li>
+<li><span class="se-icon se-icon-phone"></span></li>
+<li><span class="se-icon se-icon-armchair"></span></li>
+<li><span class="se-icon se-icon-seat"></span></li>
+<li><span class="se-icon se-icon-cup"></span></li>
+<li><span class="se-icon se-icon-projection"></span></li>
+<li><span class="se-icon se-icon-amphitheater"></span></li>
+<li><span class="se-icon se-icon-microphone"></span></li>
+<li><span class="se-icon se-icon-load-stacking"></span></li>
+<li><span class="se-icon se-icon-limited-stacking"></span></li>
+<li><span class="se-icon se-icon-no-stacking"></span></li>
+<li><span class="se-icon se-icon-keep-heat"></span></li>
+<li><span class="se-icon se-icon-hand-truck"></span></li>
+<li><span class="se-icon se-icon-no-hand-truck"></span></li>
+<li><span class="se-icon se-icon-fragile"></span></li>
+<li><span class="se-icon se-icon-clamp-here"></span></li>
+<li><span class="se-icon se-icon-no-clamp-here"></span></li>
+<li><span class="se-icon se-icon-sling-here"></span></li>
+<li><span class="se-icon se-icon-this-way-up"></span></li>
+<li><span class="se-icon se-icon-discard"></span></li>
+<li><span class="se-icon se-icon-not-step"></span></li>
+<li><span class="se-icon se-icon-temperature-levels"></span></li>
+<li><span class="se-icon se-icon-recyclable"></span></li>
+<li><span class="se-icon se-icon-handle-with-care"></span></li>
+<li><span class="se-icon se-icon-packaging-dimension"></span></li>
+</ul>
+</div>
+</div>
+</div>
+<!--close SE Pictograms-->
+
+
+</div>
+</script>
+
+</body>
+</html>
+
+

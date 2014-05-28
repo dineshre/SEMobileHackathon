@@ -1,0 +1,450 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+    overflow-x:hidden !important;
+    overflow: hidden !important;
+}
+
+@font-face {
+    font-family: 'arial_rounded_mtregular';
+    src: url('../fonts/arial_rounded_mt-webfont.eot');
+    src: url('../fonts/arial_rounded_mt-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/arial_rounded_mt-webfont.woff') format('woff'),
+    url('../fonts/arial_rounded_mt-webfont.ttf') format('truetype'),
+    url('../fonts/arial_rounded_mt-webfont.svg#arial_rounded_mtregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'arial_rounded_lightroman';
+    src: url('../fonts/arial_rounded_light-webfont.eot');
+    src: url('../fonts/arial_rounded_light-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/arial_rounded_light-webfont.woff') format('woff'),
+    url('../fonts/arial_rounded_light-webfont.ttf') format('truetype'),
+    url('../fonts/arial_rounded_light-webfont.svg#arial_rounded_lightroman') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'arial_roundedregular';
+    src: url('../fonts/arial_rounded-regular-webfont.eot');
+    src: url('../fonts/arial_rounded-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/arial_rounded-regular-webfont.woff') format('woff'),
+    url('../fonts/arial_rounded-regular-webfont.ttf') format('truetype'),
+    url('../fonts/arial_rounded-regular-webfont.svg#arial_roundedregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'arial_rounded_extraboldRg';
+    src: url('../fonts/arial_rounded-extrabold-webfont.eot');
+    src: url('../fonts/arial_rounded-extrabold-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/arial_rounded-extrabold-webfont.woff') format('woff'),
+    url('../fonts/arial_rounded-extrabold-webfont.ttf') format('truetype'),
+    url('../fonts/arial_rounded-extrabold-webfont.svg#arial_rounded_extraboldRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'arial_rounded_boldRg';
+    src: url('../fonts/ArialRoundedMTBold.eot');
+    src: url('../fonts/ArialRoundedMTBold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/ArialRoundedMTBold.woff') format('woff'),
+    url('../fonts/ArialRoundedMTBold.ttf') format('truetype'),
+    url('../fonts/ArialRoundedMTBold.svg#arial_rounded_extraboldRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.arialRdMTReg{
+    font-family: arial_rounded_mtregular;
+}
+
+.arialRdLightRoman{
+    font-family: arial_rounded_lightroman;
+}
+
+.arialRdReg{
+    font-family: arial_roundedregular;
+}
+
+.arialRdBoldReg{
+    font-family: arial_rounded_boldRg;
+}
+
+.arialRdXBoldReg{
+    font-family: arial_rounded_extraboldRg;
+}
+
+.container-full-width {
+    padding: 10px 0px;
+    overflow: hidden !important;
+}
+
+.scrollableInnerContent{
+    overflow: hidden;
+}
+
+.scrollableContent{
+    overflow: auto;
+    height: 400px;
+   -webkit-transition-property: top, bottom;
+    transition-property: top, bottom;
+    -webkit-transition-duration: .2s, .2s;
+    transition-duration: .2s, .2s;
+    -webkit-transition-timing-function: linear, linear;
+    transition-timing-function: linear, linear;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+
+.navbar-secondary-icon-left {
+    width: 48px;
+    text-align: center;
+    font-size: 20px;
+    float: left;
+    line-height: 48px; }
+
+.navbar-secondary-icon-right {
+    width: 48px;
+    text-align: center;
+    font-size: 20px;
+    float: right;
+    line-height: 48px; }
+
+.navbar-application-name{
+    font-family: arial_roundedregular;
+}
+
+.navbar-secondary-page-title{
+    font-family: arial_rounded_lightroman;
+    float: none !important;
+    text-align: center !important;
+    margin: auto;
+}
+
+/*animate*/
+.slide-left.ng-enter,
+.slide-left.ng-leave,
+.slide-right.ng-enter,
+.slide-right.ng-leave {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: inherit;
+    -ms-transition: .5s ease-in-out;
+    -webkit-transition: .5s ease-in-out;
+    transition:  .5s ease-in-out;
+}
+.slide-left.ng-enter {
+    z-index: 101;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+}
+.slide-left.ng-enter.ng-enter-active {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+.slide-left.ng-leave {
+    z-index: 100;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+.slide-left.ng-leave.ng-leave-active {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+.slide-right.ng-enter {
+    z-index: 100;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+.slide-right.ng-enter.ng-enter-active {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+.slide-right.ng-leave {
+    z-index: 101;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+.slide-right.ng-leave.ng-leave-active {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+/* UPDATED KINVEY CSS FOR OVERVIEW CLASS */
+.overviewFix {
+    position: relative !important;
+    padding: 5px 0 0 0 !important;
+}
+
+/* UPDATED KINVEY CSS FOR LOGIN-LOGO CLASS */
+.login.loginPosition{
+    position: absolute;
+    top: 0;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index: 999;
+    background: #f8f8f8;
+}
+
+.login-title{
+    font-family: arial_rounded_boldRg;
+}
+
+.login-version{
+    font-family: arial_rounded_lightroman;
+}
+
+.login-submit-btn{
+    font-family: arial_rounded_mtregular;
+}
+
+/* UPDATED KINVEY CSS FOR TABS_IOS CLASS */
+.tab-container.tabs-ios .tabs {
+    position: relative !important;
+    margin-top: -12px !important;
+}
+
+/* UPDATED KINVEY CSS FOR TAB-CONTENT CLASS */
+.tab-content{
+    padding: 0px 10px !important;
+}
+
+/* UPDATED KINVEY CSS FOR DIALOG CLASS */
+.dialog {
+    position: fixed !important;
+    -webkit-backface-visibility: hidden;
+    bottom: 0 !important;
+    left: 0 !important;
+    height: 40px !important;
+}
+
+.dialog.ng-hide-add,
+.dialog.ng-hide-remove {
+    -webkit-transition:.3s ease-in-out all;
+    transition:.3s ease-in-out all;
+    display:block!important;
+}
+
+.dialog.ng-hide-add.ng-hide-add-active,
+.dialog.ng-hide-remove {
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+}
+
+
+.dialog.ng-hide-add,
+.dialog.ng-hide-remove.ng-hide-remove-active {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+
+/* UPDATED KINVEY CSS FOR POPIN CLASS */
+.popin {
+    position: absolute;
+    top: 0px !important;
+    left:  0px !important;
+    right:  0px !important;
+    bottom:  0px !important;
+    overflow:hidden;
+    z-index: 9000;
+    background-color: rgba(0, 0, 0, 0.75);
+
+}
+
+.popin.ng-hide-add,
+.popin.ng-hide-remove {
+    -webkit-transition:.3s ease-in-out all;
+    transition:.3s ease-in-out all;
+    display:block!important;
+}
+
+.popin.ng-hide-add.ng-hide-add-active,
+.popin.ng-hide-remove {
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+}
+
+
+.popin.ng-hide-add,
+.popin.ng-hide-remove.ng-hide-remove-active {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+
+.popin .popin-dialog{
+    overflow: hidden;
+    width: 85%;
+    min-height: 200px;
+    height: 30%;
+    min-width: 200px;
+    max-width: 800px;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.popin-overlay {
+    position: absolute;
+    opacity:1;
+    top: 0px !important;
+    left:  0px !important;
+    right:  0px !important;
+    bottom:  0px !important;
+    overflow:hidden;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 8000;
+}
+
+.popin-overlay.ng-hide-add,
+.popin-overlay.ng-hide-remove {
+    -webkit-transition:.3s ease-in-out all;
+    transition:.3s ease-in-out all;
+    display:block!important;
+}
+
+.popin-overlay.ng-hide-add.ng-hide-add-active,
+.popin-overlay.ng-hide-remove {
+    opacity:0;
+}
+
+
+.popin-overlay.ng-hide-add,
+.popin-overlay.ng-hide-remove.ng-hide-remove-active {
+    opacity:1;
+}
+
+/* UPDATED KINVEY CSS FOR ABOUT SCREEN CLASS */
+.about.aboutPosition{
+    position: absolute;
+    top: 0;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index: 999;
+}
+
+.about.ng-hide-add,
+.about.ng-hide-remove {
+    -webkit-transition:.3s ease-in-out all;
+    transition:.3s ease-in-out all;
+    display:block!important;
+}
+
+.about.ng-hide-add.ng-hide-add-active,
+.about.ng-hide-remove {
+    -webkit-transform: scale(0,0);
+    transform:scale(0,0);
+}
+
+
+.about.ng-hide-add,
+.about.ng-hide-remove.ng-hide-remove-active {
+    -webkit-transform: scale(1,1);
+    transform:scale(1,1);
+}
+
+/* UPDATED KINVEY CSS FOR FORGOT PASSWORD SCREEN CLASS */
+.forgot-password.forgot-passwordPosition{
+    position: absolute;
+    top: 0;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index: 999;
+    background: #f8f8f8;
+}
+
+.forgot-password.ng-hide-add,
+.forgot-password.ng-hide-remove {
+    -webkit-transition:.3s ease-in-out all;
+    transition:.3s ease-in-out all;
+    display:block!important;
+}
+
+.forgot-password.ng-hide-add.ng-hide-add-active,
+.forgot-password.ng-hide-remove {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+
+.forgot-password.ng-hide-add,
+.forgot-password.ng-hide-remove.ng-hide-remove-active {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+
+/* UPDATED KINVEY CSS FOR CHANGE PASSWORD SCREEN CLASS */
+.reset-password.reset-passwordPosition{
+    position: absolute;
+    top: 0;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index: 999;
+    background: #f8f8f8;
+}
+
+.reset-password.ng-hide-add,
+.reset-password.ng-hide-remove {
+    -webkit-transition:.3s ease-in-out all;
+    transition:.3s ease-in-out all;
+    display:block!important;
+}
+
+.reset-password.ng-hide-add.ng-hide-add-active,
+.reset-password.ng-hide-remove {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+
+.reset-password.ng-hide-add,
+.reset-password.ng-hide-remove.ng-hide-remove-active {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+
+/* UPDATED KINVEY CSS FOR CHECKBOX TOGGLE CLASS */
+
+label.checkbox-toggle .handle {
+    position: absolute;
+    display: block;
+    left: 2px;
+    top: 2px;
+    background-image: -webkit-linear-gradient(top, #f4f4f3 0%, #dbdddc 100%);
+    background-image: linear-gradient(to bottom, #f4f4f3 0%, #dbdddc 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF4F4F3', endColorstr='#FFDBDDDC', GradientType=0);
+    width: 50%;
+    height: 21px;
+    border-radius: 500px;
+
+    -webkit-transition:.3s ease-in-out all;
+    transition:.3s ease-in-out all;
+
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+
+label.checkbox-toggle.active .handle{
+    /*right: 2px;
+    left: auto;*/
+    left: 2px;
+    top: 2px;
+    -webkit-transform: translateX(87%);
+    transform: translateX(87%);
+}

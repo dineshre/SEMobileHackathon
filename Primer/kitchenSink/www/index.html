@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link href="css/se.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/angular-snap.css" />
+        <title>Kitchen Sink</title>
+</head>
+
+<body ng-Controller="MainCtrl">
+<!--
+* LEFT MENU DRAWER USAGE PT.1
+* your senav directive must be wrapper with the snap-drawer directive tag
+-->
+<snap-drawer>
+    <!--
+    * SENAV USAGE
+    * the menuitemlist attribute accepts an object that is set in NavigationCtrl which contains our urls and
+    * other menu items - header, search and footer
+    -->
+    <senav menuitemlist="menuItems" ng-controller="NavigationCtrl" ></senav>
+
+</snap-drawer>
+
+<!--
+* LEFT MENU DRAWER USAGE PT.2
+* anything else in your app that is not in the drawer menu must be wrapped with the snap-content directive tag.
+* this handles the sliding of the application when the menu is opened and closed
+* snap-options attribute accepts an object that was set in MainCtrl
+-->
+
+<snap-content snap-options="snapOpts" class="scrollableInnerContent">
+
+<!-- Main Header Bar -->
+<div class="navbar navbar-default">
+
+<!-- snap-toggle directive is used to handle menu toggling -->
+
+    <button class="btn  navbar-toggle pull-left" snap-toggle="" >
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+
+    <div class="navbar-application-name">Kitchen Sink</div>
+
+    <i class="glyphicon glyphicon-refresh navbar-secondary-icon-right"></i>
+
+</div>
+
+<!-- Secondary Header Bar -->
+<nav class="navbar navbar-secondary" ng-controller="SecondaryNavigationCtrl" >
+  <div class="container-fluid">
+    <div class="navbar-header">
+
+        <i ng-click="back()" ng-show="showBack" class="glyphicon glyphicon-chevron-left navbar-secondary-icon-left"></i>
+        <div class="navbar-secondary-icon-left" ng-hide="showBack">&nbsp;</div>
+
+        <i class="glyphicon glyphicon-cog navbar-secondary-icon-right"></i>
+        <div class="navbar-secondary-page-title ">{{ pageTitle }}</div>
+    </div>
+  </div>
+</nav>
+
+<!-- Content Container -->
+<div class="container-full-width">
+
+    <div class="row">
+    <div class="col-md-12">
+
+        <div style="position: relative; min-height: 400px; ">
+    <div ng-view ng-class="slide"></div>
+        </div>
+    </div>
+    </div>
+</div>
+
+    <!--START DEMOS FOR SCREENS THAT CAN POP UP AT ANY TIME-->
+
+    <!--START LOGIN SAMPLE-->
+    <div class="container-fluid login loginPosition" ng-show="showLogin">
+        <h1 class="login-title">Kitchen Sink</h1>
+        <div class="login-version">Version 1.0</div>
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control input-lg" placeholder="Login" name="email">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control input-lg" placeholder="Password" name="password">
+            </div>
+            <div class="form-group login-remember-me">
+                <label class="checkbox">
+                    <input type="checkbox" class="form-control">
+                    Remember me
+                </label>
+            </div>
+            <a class="login-forgot-password-link">Forgot Password?</a>
+            <input class="login-submit-btn" type="submit" value="Login" ng-click="login()">
+            <a class="login-create-account-link" href="">Create an account</a>
+            <i class="login-logo"></i>
+        </form>
+    </div>
+    <!--END LOGIN SAMPLE-->
+
+    <!--START DIALOG SAMPLE-->
+    <div class="dialog" ng-show="showDialog">
+        <button class="btn btn-default" ng-click="dialogToggle()">Cancel</button>
+        <button class="btn btn-default" ng-click="dialogToggle()">Apply</button>
+    </div>
+    <!--END DIALOG SAMPLE-->
+
+    <!--START POPIN SAMPLE-->
+   <!-- <div class="popin-overlay" ng-show="showPopin"></div>-->
+    <div class="popin" ng-show="showPopin">
+        <div class="popin-dialog">
+            <div class="popin-content">
+                <div class="popin-header">
+                    Bluetooth Peering
+                </div>
+                <div class="popin-body">
+                    <p>
+                        Please enter the peering code displayed on your equipment:
+                    </p>
+                    <input type="password" class="form-control" value="foobar">
+                </div>
+                <div class="popin-footer">
+                    <button class="btn btn-default" ng-click="popinToggle()">Cancel</button>
+                    <button class="btn btn-success" ng-click="popinToggle()">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END POPIN SAMPLE-->
+
+    <!--START ABOUT SCREEN-->
+    <div class="about aboutPosition" ng-show="showAbout">
+        <div class="close" ng-click="closeAboutScreen()">×</div>
+        <i class="app-icon se-icon se-icon-diagnostic"></i>
+        <div class="app-name">Kitchen Sink</div>
+        <ul class="about-details">
+            <li>
+                <div class="value">1.00</div>
+                Version
+            </li>
+            <li>
+                <div class="value">WKJDofjwdf235FLDKSjkwof2038</div>
+                Key
+            </li>
+            <li>
+                <div class="value">〉</div>
+                Licenses & conditions
+            </li>
+            <li>
+                <div class="value">〉</div>
+                Contact
+            </li>
+        </ul>
+        <div class="copyright">© 2014 <strong>Schneider Electric</strong>, <br>All rights reserved.</div>
+        <i class="logo se-icon se-icon-SE_Logo"></i>
+    </div>
+    <!--END ABOUT SCREEN-->
+
+    <!--START FORGOT PASSWORD SCREEN-->
+    <div class="container-fluid forgot-password forgot-passwordPosition" ng-show="showForgotPassword">
+        <h1 class="forgot-password-title">Kitchen Sink</h1>
+        <div class="forgot-password-version">1.00</div>
+        <h3 class="forgot-password-subhead">Forgot Password?</h3>
+        <p class="description">
+            Enter your email address below and we'll send you a secure link to create a new password.
+        </p>
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control input-lg" placeholder="Email" name="email">
+            </div>
+            <input class="forgot-password-submit-btn" type="submit" value="Send" ng-click="closeForgotPassword()">
+        </form>
+        <i class="forgot-password-logo"></i>
+    </div>
+    <!--END FORGOT PASSWORD SCREEN-->
+
+    <!--START CHANGE PASSWORD SCREEN-->
+    <div class="container-fluid reset-password reset-passwordPosition" ng-show="showChangePassword">
+        <h1 class="reset-password-title">Kitchen Sink</h1>
+        <div class="reset-password-version">1.00</div>
+        <h2 class="forgot-password-subhead">Reset Password</h2>
+        <form>
+            <div class="form-group">
+                <input type="password" class="form-control input-lg" placeholder="Current Password" name="current-password">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control input-lg" placeholder="New Password" name="new-password">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control input-lg" placeholder="Confirm Password" name="confirm-password">
+            </div>
+            <input class="reset-password-submit-btn" type="submit" value="Change password" ng-click="closeChangePassword()">
+        </form>
+        <i class="reset-password-logo"></i>
+    </div>
+    <!--END CHANGE PASSWORD SCREEN-->
+
+    <!--END DEMOS FOR SCREENS THAT CAN POP UP AT ANY TIME-->
+
+</snap-content>
+
+
+
+<script type="text/javascript" src="cordova.js"></script>
+<script src="vendor/jquery.js"></script>
+<script src="vendor/fastclick.js"></script>
+<script src="directives/snap.js"></script>
+
+<script src="angular/angular.min.js"></script>
+<script src="angular/angular-route.min.js"></script>
+<script src="angular/angular-animate.min.js"></script>
+
+<script src="directives/angular-snap.js"></script>
+<script src="directives/navmenu.js"></script>
+
+<script src="app.js"></script>
+<script src="controllers.js"></script>
+
+
+</body>
+</html>
+
+
