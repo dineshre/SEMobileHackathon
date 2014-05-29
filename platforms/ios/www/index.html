@@ -3,11 +3,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="format-detection" content="telephone=no"/>
-<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
 <link href="css/se.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
 <link href="JQueryUI/css/ui-lightness/jquery-ui-1.10.4.custom.css" rel="stylesheet">
 <link href="JQueryUI/css/ui-lightness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
+<link href='HammerJS/style.css' rel='stylesheet' type='text/css'>
 
 <title>Hello Kinvey</title>
 <script type="text/javascript" src="cordova.js"></script>
@@ -23,22 +24,53 @@
 <script src="JQueryUI/js/jquery-1.10.2.js"></script>
 <script src="JQueryUI/js/jquery-ui-1.10.4.custom.js"></script>
 <script src="JQueryUI/js/jquery-ui-1.10.4.custom.min.js"></script>
-
+<script src="Zoomoz/jquery.zoomooz.min.js"></script>
 <script src="app.js"></script>
 <script src="controllers.js"></script>
+<script src="HammerJS/hammer.js"></script>
+<script src="HammerJS/jquery.hammer.js"></script>
+<script src="HammerJS/myLogic.js"></script>
 
+<style>
+    #zoomwrapper {
+        position: relative;
+        width: 60%;
+        height:100%;
+        float:left;
+    }
+    #chartContainer {
+        position: relative;
+        width: 40%;
+        height: 50%;
+        float: right;
+    }
+    #overlay_image{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 2%;
+        height: 2%;
+        background: red;
+    }
+</style>
 
 <script>
     $(function() {
         $( "#dialog" ).dialog({
             autoOpen: false,
+            color:"#fff",
+            dialogClass:"dialog-modal",
             show: {
                 effect: "blind",
                 duration: 1000
             },
-            hide: {
-                effect: "explode",
-                duration: 1000
+            buttons: {
+                "Acknowledge": function() {
+                    $( this ).dialog( "close" );
+                },
+                Cancel: function() {
+                    $( this ).dialog( "close" );
+                }
             }
         });
     });
@@ -47,257 +79,258 @@
 <script>
 
 
-    /*function alarmDetails(alarmId)
-     {
-     document.write('<div class="popin" ng-show="showPopin">' +
-     '<div class="popin-dialog">' +
-     '<div class="popin-content">' +
-     '<div class="popin-header">' +
-     'Alarm Details' +
-     '</div>' +
-     '<hr>'+
-     '<div class="popin-body">' +
-     '<table>' +
-     '<tr>' +
-     '<td>January</td>' +
-     '<td>$100</td>' +
-     '</tr>' +
-     '<tr>' +
-     '<td>February</td>' +
-     '<td>$80</td>' +
-     '</tr>' +
-     '</table>' +
-     '</div>' +
-     '<div class="popin-footer">' +
-     '<button class="btn btn-default" ng-click="popinToggle()">Cancel</button>' +
-     '<button class="btn btn-success" ng-click="popinToggle()">OK</button>' +
-     '</div>' +
-     '</div>' +
-     '</div>' +
-     '</div>'
-     );
-     }*/
-
     function showDetails()
     {
         $( "#dialog" ).dialog( "open" );
     }
 
-    function getAlarms() {
-        var alarmsList =
-        {
-            "chart": {
-                "showBorder": "0",
-                "caption": "Alarms",
-                "subcaption": "Size of bubbles indicate count/frequency",
-                "yaxisname": "Priority",
-                "xaxisname": "Time",
-                "yaxismaxvalue": "100",
-                "xaxislabeldisplay": "auto",
-                "xaxismaxvalue": "24",
-                "numvdivlines": "12",
-                "palettecolors": "CC0000,66FF00,FFFF33",
-                "adaptiveYMin": "1",
-                "showvalues": "1"
-            },
-            "dataset": [
-                {
-                    "seriesname": "Alarm",
-                    "data": [
-                        {
-                            "y": "20",
-                            "x": "1.5",
-                            "z": "15000",
-                            "name": "15000",
-                            "link": "j-showDetails"
-                        },
-                        {
-                            "y": "75",
-                            "x": "4.5",
-                            "z": "10000",
-                            "name": "10000",
-                            "link": "j-showDetails"
-                        },
-                        {
-                            "y": "100",
-                            "x": "6",
-                            "z": "30000",
-                            "name": "30000",
-                            "link": "j-showDetails"
-                        },
-                        {
-                            "y": "70",
-                            "x": "7",
-                            "z": "16000",
-                            "name": "16000",
-                            "link": "j-showDetails"
-                        },
-                        {
-                            "y": "20",
-                            "x": "8",
-                            "z": "15000",
-                            "name": "15000",
-                            "link": "j-showDetails"
-                        }
-                    ]
-                },
-                {
-                    "seriesname": "Reset",
-                    "data": [
-                        {
-                            "y": "25",
-                            "x": "3.5",
-                            "z": "15000",
-                            "name": "15000",
-                            "link": "j-showDetails"
-                        },
-                        {
-                            "y": "10",
-                            "x": "8.5",
-                            "z": "10000",
-                            "name": "10000",
-                            "link": "j-showDetails"
-                        },
-                        {
-                            "y": "75",
-                            "x": "8.5",
-                            "z": "16000",
-                            "name": "16000",
-                            "link": "j-showDetails"
-                        }
-                    ]
-                },
-                {
-                    "seriesname": "Acknowledged",
-                    "data": [
-                        {
-                            "y": "20",
-                            "x": "22",
-                            "z": "15000",
-                            "name": "15000",
-                            "link": "j-showDetails"
-                        },
-                        {
-                            "y": "10",
-                            "x": "24",
-                            "z": "10000",
-                            "name": "1-0000",
-                            "link": "j-showDetails"
-                        },
-                        {
-                            "y": "75",
-                            "x": "16",
-                            "z": "16000",
-                            "name": "16000",
-                            "link": "j-showDetails"
-                        }
-                    ]
-                }
-            ],
-            "trendlines": [
-                {
-                    "line": [
-                        {
-                            "startvalue": "0",
-                            "endvalue": "20",
-                            "displayvalue": "",
-                            "istrendzone": "1",
-                            "color": "009900",
-                            "alpha": "5"
-                        },
-                        {
-                            "startvalue": "20",
-                            "endvalue": "80",
-                            "displayvalue": "",
-                            "istrendzone": "1",
-                            "color": "5B5B00",
-                            "alpha": "5"
-                        },
-                        {
-                            "startvalue": "80",
-                            "endvalue": "100",
-                            "displayvalue": "",
-                            "istrendzone": "1",
-                            "color": "FF000",
-                            "alpha": "5"
-                        }
-                    ]
-                }
-            ]
-        }
-        return alarmsList;
-    }
-    function loadChart() {
-        var alarms = getAlarms();
-        var myChart = new FusionCharts("Bubble", "myChartId", "100%", "100%", "0", "1");
-        myChart.setTransparent(true);
-        myChart.setJSONData(alarms);
-        myChart.render("chartContainer");
-    }
+//    function getAlarms() {
+////        var alarmsList =
+////        {
+////            "chart": {
+////                "showBorder": "0",
+////                "caption": "Alarms",
+////                "subcaption": "Size of bubbles indicate count/frequency",
+////                "yaxisname": "Priority",
+////                "xaxisname": "Time",
+////                "yaxismaxvalue": "100",
+////                "xaxislabeldisplay": "auto",
+////                "xaxismaxvalue": "24",
+////                "numvdivlines": "12",
+////                "palettecolors": "CC0000,66FF00,FFFF33",
+////                "adaptiveYMin": "1",
+////                "showvalues": "1"
+////            },
+////            "dataset": [
+////                {
+////                    "seriesname": "Alarm",
+////                    "data": [
+////                        {
+////                            "y": "20",
+////                            "x": "1.5",
+////                            "z": "15000",
+////                            "name": "15000",
+////                            "link": "j-showDetails"
+////                        },
+////                        {
+////                            "y": "75",
+////                            "x": "4.5",
+////                            "z": "10000",
+////                            "name": "10000",
+////                            "link": "j-showDetails"
+////                        },
+////                        {
+////                            "y": "100",
+////                            "x": "6",
+////                            "z": "30000",
+////                            "name": "30000",
+////                            "link": "j-showDetails"
+////                        },
+////                        {
+////                            "y": "70",
+////                            "x": "7",
+////                            "z": "16000",
+////                            "name": "16000",
+////                            "link": "j-showDetails"
+////                        },
+////                        {
+////                            "y": "20",
+////                            "x": "8",
+////                            "z": "15000",
+////                            "name": "15000",
+////                            "link": "j-showDetails"
+////                        }
+////                    ]
+////                },
+////                {
+////                    "seriesname": "Reset",
+////                    "data": [
+////                        {
+////                            "y": "25",
+////                            "x": "3.5",
+////                            "z": "15000",
+////                            "name": "15000",
+////                            "link": "j-showDetails"
+////                        },
+////                        {
+////                            "y": "10",
+////                            "x": "8.5",
+////                            "z": "10000",
+////                            "name": "10000",
+////                            "link": "j-showDetails"
+////                        },
+////                        {
+////                            "y": "75",
+////                            "x": "8.5",
+////                            "z": "16000",
+////                            "name": "16000",
+////                            "link": "j-showDetails"
+////                        }
+////                    ]
+////                },
+////                {
+////                    "seriesname": "Acknowledged",
+////                    "data": [
+////                        {
+////                            "y": "20",
+////                            "x": "22",
+////                            "z": "15000",
+////                            "name": "15000",
+////                            "link": "j-showDetails"
+////                        },
+////                        {
+////                            "y": "10",
+////                            "x": "24",
+////                            "z": "10000",
+////                            "name": "1-0000",
+////                            "link": "j-showDetails"
+////                        },
+////                        {
+////                            "y": "75",
+////                            "x": "16",
+////                            "z": "16000",
+////                            "name": "16000",
+////                            "link": "j-showDetails"
+////                        }
+////                    ]
+////                }
+////            ],
+////            "trendlines": [
+////                {
+////                    "line": [
+////                        {
+////                            "startvalue": "0",
+////                            "endvalue": "20",
+////                            "displayvalue": "",
+////                            "istrendzone": "1",
+////                            "color": "009900",
+////                            "alpha": "5"
+////                        },
+////                        {
+////                            "startvalue": "20",
+////                            "endvalue": "80",
+////                            "displayvalue": "",
+////                            "istrendzone": "1",
+////                            "color": "5B5B00",
+////                            "alpha": "5"
+////                        },
+////                        {
+////                            "startvalue": "80",
+////                            "endvalue": "100",
+////                            "displayvalue": "",
+////                            "istrendzone": "1",
+////                            "color": "FF000",
+////                            "alpha": "5"
+////                        }
+////                    ]
+////                }
+////            ]
+////        }
+////        return alarmsList;
+//
+//        var kinveyInit = kinveyServices.init(APPCONFIG.APIENDPOINT,APPCONFIG.APPKEY,APPCONFIG.APPSECRET);
+//        kinveyInit.then(
+//                function (success) {
+//                    $scope.myKinveyInit = success;
+//
+//                    var ping = kinveyServices.ping();
+//                    ping.then(
+//                            function (success2) {
+//                                $scope.myKinveyPing = success2;
+//
+//                            },
+//                            function (error2) {
+//                                $scope.myKinveyPing = error2;
+//                            });
+//
+//                },
+//                function (error) {
+//                    $scope.myKinveyInit = error;
+//                }).then(function() {
+//
+//
+//                    //logging in for security
+//
+//                    var promise = Kinvey.User.login('ajit', 'schneider');
+//                    promise.then(function() {
+//
+//
+//                        //$http({method: 'GET', url: 'AlarmBacklog.json'}).
+//                        Kinvey.DataStore.find('AlarmBacklog', null, {
+//                            success: function (data, status, headers, config) {
+//                                // this callback will be called asynchronously
+//                                // when the response is available
+//                                // angular.forEach(data, function(value, key) {
+//                                /*      console.log(key + ':' + value )
+//
+//                                 });*/
+//
+//                                //for(var i=0;i < data.length;i++)
+//                                //{
+//                                console.log(JSON.stringify(data, null,2));
+//                                //}
+//                                 //var alarmsList = JSON.stringify(data, null,2);
+//
+//                            },
+//                            error: function (data, status, headers, config) {
+//
+//                                console.log("The error is here. ")
+//                                console.log("Data is : ", data)
+//
+//                                // or server returns response with an error status.
+//                            }
+//                        });
+//                    });
+//                });
+//        return alarmsList;
+//    }
+//    function loadChart() {
+//        //var alarms = getAlarms();
+//        var myChart = new FusionCharts("Bubble", "myChartId", "100%", "100%", "0", "1");
+//        myChart.setTransparent(true);
+//        myChart.setJSONData(alarms);
+//        myChart.render("chartContainer");
+//    }
 </script>
 
 </head>
 <body>
 
-<!--<div id="dialog-model" class="popin" ng-show="showPopin">
-    <div class="popin-dialog">
-        <div class="popin-content">
-            <div class="popin-header">
-                Alarm Details
-            </div>
-            <hr>
-            <div class="popin-body">
-                <table>
-                    <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>February</td>
-                        <td>$80</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="popin-footer">
-                <button class="btn btn-default" ng-click="popinToggle()">Cancel</button>
-                <button class="btn btn-success" ng-click="popinToggle()">OK</button>
+<div id="dialog" class="dialog-modal" title="Alarm details">
+	<style>
+        .ui-dialog-titlebar {
+            background-color: #0ff971;
+            background-image: none;
+            color: #000;
+        }
+	</style>
+    <div >
+        <table>
+            <tr>
+                <td>January</td>
+                <td>$100</td>
+            </tr>
+            <tr>
+                <td>February</td>
+                <td>$80</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div ng-controller="page1Controller" id="container" style="height: 100%;width: 100%; display: inline">
+    <div id="zoomwrapper">
+        <div id="zoom" class="zoomProps" style="height: 100%;width: 100%">
+            <div class="img-div" style="height: 100%;width: 60%">
+                <img id="map-image" src="img/Floor%201.jpg" alt="Smiley face" height="80%" width="100%"/>
+                <div id="overlay_image"></div>
             </div>
         </div>
     </div>
-</div>-->
-<div id="dialog" title="Basic modal dialog" style="visibility:hidden">
-    <div>
-        <div>
-            <div>
-                Alarm Details
-            </div>
-            <hr>
-            <div >
-                <table>
-                    <tr>
-                        <td>January</td>
-                        <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>February</td>
-                        <td>$80</td>
-                    </tr>
-                </table>
-            </div>
-            <div >
-                <button onclick="popinToggle()">Cancel</button>
-                <button onclick="popinToggle()">OK</button>
-            </div>
-        </div>
-</div>
-<div id="chartContainer" style="width: 540px; height: 540px;">
+    <div id="chartContainer"/>
     <script type="text/javascript">
-        loadChart();
+        //loadChart();
     </script>
 </div>
-
-
-
 
 </body>
 </html>

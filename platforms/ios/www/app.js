@@ -13,7 +13,7 @@ function loadTheApp() {
 
     // Boot AngularJS
     try {
-        angular.bootstrap($('body'), ['KitchenSink']);
+        angular.bootstrap($('body'), ['helloKinvey']);
     } catch (e) {
         console.log("Angular didn't load " + e);
     }
